@@ -1,72 +1,37 @@
-/* Navbar styling */
-.navbar {
+* {
+    box-sizing: border-box;
+    margin:0px;
+    padding:0px;
+}
+
+.header-container {
     display: flex;
-    flex-direction: row;
-    justify-content: start;
-    flex-wrap: wrap;
+
 }
 
-/* Center navigation links */
-.navbar-links {
-    margin-top: 80px;
+.navigationLogIn {
+    border: solid red 1px;
+    width:100%;
+    
+
 }
 
-/* Active nav link (e.g., Home) */
-.nav-link.active {
-    margin-left: 90px;
-    color: aliceblue;
-    background-color: #4b2e35;
+.log-in{
+    border:solid blue 1px;
+    display:flex;
+     justify-content: flex-end;
+}
+
+.nav-action {
+    padding:15px;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px black;
+    color:black;
+    font-weight:bold;
 }
 
-/* Other nav links */
-.nav-link {
-    margin-left: 90px;
-    color: black;
-    text-decoration: none;
+.login {
+    color:white;
+    background-color:#643B47;
+    border-radius: 0px 0px 10px 10px;
 }
 
-/* Right-side navbar actions */
-.navbar-actions {
-    margin-left: 100px;
-}
-
-/* Contact link */
-.nav-action.contact {
-    margin-right: 30px;
-    color: black;
-    text-decoration: none;
-}
-
-/* Login button */
-.nav-action.login {
-    margin-right: 30px;
-    color: aliceblue;
-    text-decoration: none;
-    background-color: #4b2e35;
-    padding: 8px 16px;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px black;
-}
-
-/* Hero image wrapper */
-.hero-image-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 40px;
-    color: white;
-    position: relative;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-/* Gradient overlay on hero image */
-.hero-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), transparent 100%);
-}
