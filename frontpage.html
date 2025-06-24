@@ -7,33 +7,60 @@
     <link rel="stylesheet" href="frontpage.css" />
   </head>
   <body>
-    <!-- Header Section (Top Navigation Bar) -->
-    <header class="header-container">
-      <a href="#"
-        ><div class="logo-section">
-          <img src="imgs/front-page/logo.svg" width="350px" /></div
-      ></a>
+    <!-- ========== Header Section (Top Navigation Bar) ========== -->
+    <header class="header">
+      <!-- Logo -->
+      <a href="#">
+        <div class="logo-container">
+          <img
+            src="imgs/front-page/logo.svg"
+            alt="Amara Lighthouse Logo"
+            width="350"
+          />
+        </div>
+      </a>
 
-      <div class="navigationLogIn">
-        <div class="log-in">
-          <a href="#" class="nav-action login">Login</a>
-          <a href="#" class="nav-action contact">Contact Us</a>
+      <!-- Navigation and Login Area -->
+      <div class="nav-login-container">
+        <!-- Login and Contact Buttons -->
+        <div class="auth-buttons">
+          <a href="#" class="btn login-btn">Login</a>
+          <a href="#" class="btn contact-btn">Contact Us</a>
         </div>
 
-        <div class="navbar-links">
-          <nav>
-            <ul class="nav-list">
-              <li><a href="#" class="nav-link active">Home</a></li>
-              <li><a href="#" class="nav-link">Explore</a></li>
-              <li><a href="#" class="nav-link">Shop</a></li>
-              <li><a href="#" class="nav-link">About Us</a></li>
-            </ul>
-          </nav>
-        </div>
+        <!-- Main Navigation Links -->
+        <nav class="main-nav">
+          <ul class="nav-list">
+            <li><a href="#" class="nav-link">Home</a></li>
+            <li><a href="#" class="nav-link">Explore</a></li>
+            <li><a href="#" class="nav-link">Shop</a></li>
+            <li><a href="#" class="nav-link">About Us</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
 
-    <!-- Hero Image Section -->
-    <section class="hero-section"></section>
+    <!-- ========== Hero Section (Full-Width Intro Image with Text & Buttons) ========== -->
+    <section class="hero">
+      <!-- Background image is applied using CSS to this div -->
+      <div class="hero-background">
+        <!-- Transparent overlay for better text readability -->
+        <div class="hero-overlay">
+          <!-- Main heading text -->
+          <div class="hero-heading">
+            <p>
+              Learn History Like <br />
+              Never Before!!
+            </p>
+          </div>
+
+          <!-- Hero Buttons -->
+          <div class="hero-cta-buttons">
+            <a href="#" class="btn explore-btn">Start Exploring</a>
+            <a href="#" class="btn video-btn">Watch Intro Video</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
