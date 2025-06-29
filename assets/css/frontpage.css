@@ -87,7 +87,7 @@
 
 /* Hero Background Image */
 .hero-background {
-    background-image: url("imgs/front-page/Bagan-pagoda.jpg");
+    background-image: url("../imgs/front-page/Bagan-pagoda.jpg");
     background-size: cover;
     background-position: center;
     height: 450px;
