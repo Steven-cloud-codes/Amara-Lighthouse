@@ -1,0 +1,87 @@
+/* ===== animations.css ===== */
+
+/* Fade In */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Slide In Right */
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide In Up */
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Zoom In */
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Float (Loop) */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* === Optional Reusable Classes === */
+.fade-in {
+    animation: fadeIn 1.5s ease forwards;
+}
+
+.fade-up {
+    animation: fadeSlideUp 1.5s ease forwards;
+}
+
+.fade-right {
+    animation: fadeSlideIn 1.5s ease forwards;
+}
+
+.zoom-in {
+    animation: zoomIn 1.2s ease forwards;
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+}

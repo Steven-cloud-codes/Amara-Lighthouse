@@ -1,0 +1,145 @@
+/* ================= Global Reset ================= */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* ================= Fonts ================= */
+body {
+    font-family: 'Poppins', 'Noto Sans Myanmar', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #fffdf7;
+    color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Playfair Display', 'Noto Serif Myanmar', serif;
+}
+
+/* =================== Banner =================== */
+.thanakha-banner {
+    display: flex;
+    border-radius: 25px;
+    background-color: blanchedalmond;
+    padding: 40px;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-text {
+    color: brown;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* =================== Section Title =================== */
+.section-title {
+    text-align: center;
+    font-size: 60px;
+    margin: 30px;
+}
+
+/* =================== Thanakha Introduction =================== */
+.thanakha-introduction {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.section-text {
+    width: 900px;
+    text-align: center;
+}
+
+/* =================== Usage Section =================== */
+.thanakha-usage {
+    padding: 50px 20px;
+    background-color: blanchedalmond;
+}
+
+.usage-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.usage-card {
+    text-align: center;
+    height: 280px;
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 15px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.usage-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Emoji styling inside card */
+.emoji {
+    font-size: 80px;
+}
+
+/* Optional: Border between cards except last */
+.usage-card:not(:last-child) {
+    border-right: 1px solid #ccc;
+}
+
+/* =================== Animations =================== */
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
