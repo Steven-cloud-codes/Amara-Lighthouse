@@ -10,52 +10,49 @@
   <body>
     <!-- ========== Header Section ========== -->
     <header class="header">
-      <!-- Logo -->
+      <!-- Top Row: Login & Contact Us -->
+      <div class="auth-buttons">
+        <a href="#" class="btn login-btn">Login</a>
+        <a href="#" class="btn contact-btn">Contact Us</a>
+      </div>
+
+      <!-- Middle Row: Logo -->
       <a href="#">
         <div class="logo-container">
           <img
             src="assets/imgs/front-page/logo.svg"
-            alt="Amara Lighthouse Logo"
+            alt="Amara Lighthouse logo"
             width="350"
           />
         </div>
       </a>
 
-      <!-- Wrapper for Login/Contact and Navigation -->
-      <div class="nav-login-container">
-        <!-- Login and Contact Buttons -->
-        <div class="auth-buttons">
-          <a href="#" class="btn login-btn">Login</a>
-          <a href="#" class="btn contact-btn">Contact Us</a>
-        </div>
+      <!-- Hamburger Icon -->
+      <div class="hamburger" id="hamburger">&#9776;</div>
 
-        <!-- Navigation Links (Now placed under auth-buttons) -->
-        <nav class="main-nav">
-          <ul class="nav-list">
-            <li><a href="#" class="nav-link active">Home</a></li>
-            <li>
-              <a href="culture_and_daily-life.html" class="nav-link">Explore</a>
-            </li>
-            <li><a href="#" class="nav-link">Shop</a></li>
-            <li><a href="#" class="nav-link">About Us</a></li>
-          </ul>
-        </nav>
-      </div>
+      <!-- Navigation Links -->
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link active">Home</a></li>
+          <li>
+            <a href="culture_and_daily-life.html" class="nav-link">Explore</a>
+          </li>
+          <li><a href="#" class="nav-link">Shop</a></li>
+          <li><a href="#" class="nav-link">About Us</a></li>
+        </ul>
+      </nav>
     </header>
 
     <!-- ========== Hero Section ========== -->
     <section class="hero">
       <div class="hero-background">
         <div class="hero-overlay">
-          <!-- Main Heading -->
           <div class="hero-heading">
             <p>
               Learn History Like <br />
               Never Before!!
             </p>
           </div>
-
-          <!-- Hero Buttons -->
           <div class="hero-cta-buttons">
             <a href="culture_and_daily-life.html" class="btn explore-btn"
               >Start Exploring</a
@@ -65,5 +62,15 @@
         </div>
       </div>
     </section>
+
+    <!-- Script to toggle nav -->
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const nav = document.querySelector(".main-nav");
+
+      hamburger.addEventListener("click", () => {
+        nav.classList.toggle("show");
+      });
+    </script>
   </body>
 </html>

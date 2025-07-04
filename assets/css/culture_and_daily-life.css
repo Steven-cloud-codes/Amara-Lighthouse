@@ -104,6 +104,7 @@ h6 {
     border-right: 1px solid #ccc;
 }
 
+
 /* =================== Animations =================== */
 @keyframes fadeSlideIn {
     0% {
@@ -143,3 +144,92 @@ h6 {
     }
 }
 
+/* =================== Responsive =================== */
+@media (max-width: 1200px) {
+    .thanakha-banner {
+            flex-direction: column;
+            text-align: center;
+            padding: 30px;
+            gap: 20px;
+            width: 100%
+    }
+    .section-text {
+        width: 80%;
+    }
+
+    .banner-text {
+        font-size: 32px;
+    }
+
+    .section-title {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 900px) {
+    .thanakha-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+        gap: 20px;
+        width:100%
+    }
+
+    .banner-text {
+        font-size: 28px;
+    }
+
+    .section-title {
+        font-size: 42px;
+    }
+
+    .thanakha-introduction {
+        font-size: 24px;
+    }
+
+    .usage-card {
+        width: 45%;
+        height: auto;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .thanakha-section {
+   
+            width: 100%;
+    }
+    .section-text {
+        width: 95%;
+    }
+
+    .banner-text {
+        font-size: 24px;
+    }
+
+    .section-title {
+        font-size: 36px;
+        margin: 20px;
+    }
+
+    .thanakha-introduction {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .usage-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .usage-card {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .emoji {
+        font-size: 60px;
+    }
+}
