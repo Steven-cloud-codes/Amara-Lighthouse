@@ -10,37 +10,42 @@
   <body>
     <!-- ========== Header Section ========== -->
     <header class="header">
-      <!-- Top Row: Login & Contact Us -->
-      <div class="auth-buttons">
-        <a href="#" class="btn login-btn">Login</a>
-        <a href="#" class="btn contact-btn">Contact Us</a>
-      </div>
-
-      <!-- Middle Row: Logo -->
-      <a href="#">
-        <div class="logo-container">
+      <div class="header-container">
+        <!-- Logo on the left -->
+        <a href="#" class="logo-container">
           <img
             src="assets/imgs/front-page/logo.svg"
             alt="Amara Lighthouse logo"
-            width="350"
+            width="250"
           />
+        </a>
+
+        <!-- Right Side: Auth Buttons, Nav Links, Hamburger -->
+        <div class="right-section">
+          <!-- Auth Buttons -->
+          <div class="auth-buttons">
+            <a href="#" class="btn login-btn">Login</a>
+            <a href="#" class="btn contact-btn">Contact Us</a>
+          </div>
+
+          <!-- Navigation Links -->
+          <nav class="main-nav">
+            <ul class="nav-list">
+              <li><a href="#" class="nav-link active">Home</a></li>
+              <li>
+                <a href="culture_and_daily-life.html" class="nav-link"
+                  >Explore</a
+                >
+              </li>
+              <li><a href="#" class="nav-link">Shop</a></li>
+              <li><a href="#" class="nav-link">About Us</a></li>
+            </ul>
+          </nav>
+
+          <!-- Hamburger Icon for Mobile -->
+          <div class="hamburger" id="hamburger">&#9776;</div>
         </div>
-      </a>
-
-      <!-- Hamburger Icon -->
-      <div class="hamburger" id="hamburger">&#9776;</div>
-
-      <!-- Navigation Links -->
-      <nav class="main-nav">
-        <ul class="nav-list">
-          <li><a href="#" class="nav-link active">Home</a></li>
-          <li>
-            <a href="culture_and_daily-life.html" class="nav-link">Explore</a>
-          </li>
-          <li><a href="#" class="nav-link">Shop</a></li>
-          <li><a href="#" class="nav-link">About Us</a></li>
-        </ul>
-      </nav>
+      </div>
     </header>
 
     <!-- ========== Hero Section ========== -->
@@ -63,7 +68,7 @@
       </div>
     </section>
 
-    <!-- Script to toggle nav -->
+    <!-- ========== Script to Toggle Nav on Small Screens ========== -->
     <script>
       const hamburger = document.getElementById("hamburger");
       const nav = document.querySelector(".main-nav");

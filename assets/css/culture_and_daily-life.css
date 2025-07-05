@@ -21,6 +21,70 @@ h6 {
     font-family: 'Playfair Display', 'Noto Serif Myanmar', serif;
 }
 
+/* =================== Header =================== */
+.header {
+    background-color: #fffdf7;
+    padding: 20px 40px;
+    border-bottom: 1px solid #ccc;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons .btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: brown;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding-left: 0;
+    margin: 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-link.active {
+    border-bottom: 2px solid brown;
+}
+
+.hamburger {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
 /* =================== Banner =================== */
 .thanakha-banner {
     display: flex;
@@ -94,16 +158,33 @@ h6 {
     transform: translateY(-8px);
 }
 
-/* Emoji styling inside card */
 .emoji {
     font-size: 80px;
 }
 
-/* Optional: Border between cards except last */
 .usage-card:not(:last-child) {
     border-right: 1px solid #ccc;
 }
 
+/* =================== Thanakha Types =================== */
+.thanakha-types {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.thanakha-type-card {
+    width: 300px;
+    height: 700px;
+    font-size: 20px;
+    border-radius: 0px 0px 30px 30px;
+    background-color: rgb(255, 218, 162);
+}
+
+.thanakha-type-card-img {
+    border-radius: 20px;
+    width: 100%;
+}
 
 /* =================== Animations =================== */
 @keyframes fadeSlideIn {
@@ -147,12 +228,13 @@ h6 {
 /* =================== Responsive =================== */
 @media (max-width: 1200px) {
     .thanakha-banner {
-            flex-direction: column;
-            text-align: center;
-            padding: 30px;
-            gap: 20px;
-            width: 100%
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+        gap: 20px;
+        width: 100%;
     }
+
     .section-text {
         width: 80%;
     }
@@ -172,7 +254,7 @@ h6 {
         text-align: center;
         padding: 30px;
         gap: 20px;
-        width:100%
+        width: 100%;
     }
 
     .banner-text {
@@ -194,12 +276,41 @@ h6 {
     }
 }
 
-@media (max-width: 600px) {
-
-    .thanakha-section {
-   
-            width: 100%;
+@media (max-width: 768px) {
+    .right-section {
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+        gap: 15px;
     }
+
+    .main-nav {
+        width: 100%;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-end;
+        display: none;
+        background-color: #fffdf7;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .main-nav.show .nav-list {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .thanakha-section {
+        width: 100%;
+    }
+
     .section-text {
         width: 95%;
     }
