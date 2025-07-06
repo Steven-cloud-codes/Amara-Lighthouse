@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/culture_and_daily-life.css" />
     <link rel="stylesheet" href="assets/css/animation.css" />
     <link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -30,7 +31,7 @@
       </div>
 
       <!-- =================== What is Thanakha =================== -->
-      <div class="thanakha-introduction">
+      <div class="thanakha-introduction" data-aos="flip-right">
         <h2 class="section-title">What is Thanakha?</h2>
         <div class="section-text">
           <p>
@@ -44,7 +45,7 @@
       </div>
 
       <!-- =================== What is Thanakha Used For =================== -->
-      <div class="thanakha-usage">
+      <div class="thanakha-usage" data-aos="zoom-in-up">
         <h2 class="section-title">What is Thanakha Used For?</h2>
         <div class="usage-cards">
           <!-- ========== Card 1 ========== -->
@@ -82,7 +83,7 @@
       <div class="thanakha-types-title mt-3 text-center fs-5" style="">
         <h2>Ways to use it</h2>
 
-        <div class="thanakha-types">
+        <div class="thanakha-types" data-aos="fade-right">
           <div class="thanakha-type-card mt-3">
             <div>
               <img
@@ -97,7 +98,7 @@
             </h5>
           </div>
 
-          <div class="thanakha-type-card mt-3">
+          <div class="thanakha-type-card mt-3" data-aos="fade-up">
             <div>
               <img
                 class="thanakha-type-card-img"
@@ -111,7 +112,7 @@
             </h5>
           </div>
 
-          <div class="thanakha-type-card mt-3">
+          <div class="thanakha-type-card mt-3" data-aos="fade-right">
             <div>
               <img
                 class="thanakha-type-card-img"
@@ -127,5 +128,10 @@
         </div>
       </div>
     </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

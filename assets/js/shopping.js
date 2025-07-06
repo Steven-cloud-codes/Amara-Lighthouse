@@ -3,26 +3,21 @@ const shopItems = [
       name: "Traditional Longyi",
       description: "Worn for generations in Myanmar, symbolizing elegance and comfort.",
       image: "assets/imgs/shopping/longyi.jpg",
-      price:"1ks"
+      price:"25000ks"
     },
     {
       name: "Burmese Puppet",
       description: "Handcrafted puppet used in traditional theatre performances.",
       image: "assets/imgs/shopping/puppet.jpg",
-      price:"1ks"
+      price:"50000ks"
     },
     {
       name: "Lacquerware Box",
       description: "Beautifully carved container made with ancient techniques in Bagan.",
       image: "assets/imgs/shopping/lacquer-box.jpg",
-      price:"1ks"
-    },
-    {
-        name: "a",
-        description: "b",
-        image: "images/lacquerware.jpg",
-        price:"c"
-      }
+      price:"30000ks"
+    }
+
   ];
   
   const shopContainer = document.getElementById("shopContainer");
@@ -40,7 +35,7 @@ const shopItems = [
             <p class="card-text">${item.description}</p>
             <h3 class="card-price">${item.price}</h3>
           </div>
-          <a href="#" class="btn mt-3" style="background-color:#643b47; color: white;">Buy it</a>
+          <a href="#" class="btn mt-3" style="background-color:#643b47; color: white;">Buy </a>
 
         </div>
       </div>
