@@ -2,19 +2,19 @@ const shopItems = [
     {
       name: "Traditional Longyi",
       description: "Worn for generations in Myanmar, symbolizing elegance and comfort.",
-      image: "images/longyi.jpg",
+      image: "assets/imgs/shopping/longyi.jpg",
       price:"1ks"
     },
     {
       name: "Burmese Puppet",
       description: "Handcrafted puppet used in traditional theatre performances.",
-      image: "images/puppet.jpg",
+      image: "assets/imgs/shopping/puppet.jpg",
       price:"1ks"
     },
     {
       name: "Lacquerware Box",
       description: "Beautifully carved container made with ancient techniques in Bagan.",
-      image: "images/lacquerware.jpg",
+      image: "assets/imgs/shopping/lacquer-box.jpg",
       price:"1ks"
     },
     {

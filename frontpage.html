@@ -10,9 +10,18 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/frontpage.css" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
 
   <body>
+    <script href="assets/js/frontpage.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
     <!-- ========== Header Section ========== -->
     <header class="header">
       <!-- Top Row: Login & Contact Us -->
@@ -76,7 +85,7 @@
         </h2>
 
         <!-- Location Card -->
-        <div class="card mb-4 shadow-lg border-0">
+        <div class="card mb-4 shadow-lg border-0 fade-in">
           <div class="row g-0 align-items-center">
             <div class="col-md-6 p-4">
               <h4 class="card-title">📍 Location</h4>
@@ -96,7 +105,7 @@
         </div>
 
         <!-- Capital Card -->
-        <div class="card mb-4 shadow-lg border-0">
+        <div class="card mb-4 shadow-lg border-0" data-aos="flip-left">
           <div class="row g-0 align-items-center flex-md-row-reverse">
             <div class="col-md-6 p-4">
               <h4 class="card-title">🏛️ Capital</h4>
@@ -116,7 +125,7 @@
         </div>
 
         <!-- Major Cities Card -->
-        <div class="card mb-4 shadow-lg border-0">
+        <div class="card mb-4 shadow-lg border-0" data-aos="flip-left">
           <div class="row g-0 align-items-center">
             <div class="col-md-6 p-4">
               <h4 class="card-title">🏙️ Major Cities</h4>
@@ -136,7 +145,7 @@
         </div>
 
         <!-- Landscape Card -->
-        <div class="card mb-4 shadow-lg border-0">
+        <div class="card mb-4 shadow-lg border-0" data-aos="flip-left">
           <div class="row g-0 align-items-center flex-md-row-reverse">
             <div class="col-md-6 p-4">
               <h4 class="card-title">🌄 Landscape</h4>
@@ -156,7 +165,7 @@
         </div>
 
         <!-- Climate Card -->
-        <div class="card mb-4 shadow-lg border-0">
+        <div class="card mb-4 shadow-lg border-0" data-aos="zoom-in-right">
           <div class="row g-0 align-items-center">
             <div class="col-md-6 p-4">
               <h4 class="card-title">☀️ Climate</h4>
