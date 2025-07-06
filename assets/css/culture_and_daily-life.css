@@ -142,7 +142,7 @@ h6 {
 
 .usage-card {
     text-align: center;
-    height: 280px;
+    height: auto;
     width: 230px;
     display: flex;
     flex-direction: column;
@@ -175,7 +175,7 @@ h6 {
 
 .thanakha-type-card {
     width: 300px;
-    height: 700px;
+    height: auto;
     font-size: 20px;
     border-radius: 0px 0px 30px 30px;
     background-color: rgb(255, 218, 162);
