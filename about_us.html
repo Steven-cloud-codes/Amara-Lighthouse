@@ -1,36 +1,172 @@
-<section id="about" style="padding: 60px 20px">
-  <div
-    style="
-      width: 100%;
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | Amara Lighthouse</title>
 
-      display: flex;
-      justify-content: center;
-    "
-  >
-    <img
-      src="assets/imgs/front-page/logo.svg"
-      width="600px"
-      style="text-align: center"
-    />
-  </div>
-  <div style="max-width: 1000px; margin: auto; text-align: center">
-    <h2 style="font-size: 2.5rem; margin-bottom: 20px">
-      About Amara Lighthouse
-    </h2>
-    <p style="font-size: 1.1rem; line-height: 1.7; color: #333">
-      Amara Lighthouse is more than a project — it's a revival of Myanmar's
-      untold stories and timeless heritage. What started as a simple assignment
-      turned into a journey through ancient scripts, forgotten kingdoms, and
-      cultural treasures. We turned boredom in history class into curiosity, and
-      curiosity into creation.
-    </p>
-    <p
-      style="font-size: 1.1rem; line-height: 1.7; color: #333; margin-top: 20px"
-    >
-      Our mission is to make learning history fun, visual, and meaningful for
-      the younger generation. Through storytelling, games, and interactive
-      design, we bring the past to life — because to shape the future, we must
-      first understand our roots.
-    </p>
-  </div>
-</section>
+    <!-- External Styles -->
+    <link rel="stylesheet" href="assets/css/about_us.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      /* ===== Global Reset & Base Styles ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fefefe;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      h2 {
+        color: #643b47;
+      }
+
+      .back-btn {
+        background-color: #643b47;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 20px;
+        transition: background 0.3s ease;
+      }
+
+      .back-btn:hover {
+        background-color: #4a2e38;
+      }
+
+      /* ===== About Section ===== */
+      #about {
+        padding: 60px 20px;
+      }
+
+      .logo-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+      }
+
+      .about-content {
+        max-width: 1000px;
+        margin: auto;
+        text-align: center;
+        padding: 0 15px;
+      }
+
+      .about-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .about-content p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-top: 20px;
+      }
+
+      .about-content h3 {
+        margin-top: 40px;
+        font-size: 1.5rem;
+        color: #643b47;
+      }
+
+      .about-content img {
+        margin-top: 20px;
+        width: 25%;
+        max-width: 200px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* ===== Responsive Styles ===== */
+      @media (max-width: 768px) {
+        .about-content h2 {
+          font-size: 2rem;
+        }
+
+        .about-content p {
+          font-size: 1rem;
+        }
+
+        .about-content img {
+          width: 50%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .about-content h2 {
+          font-size: 1.7rem;
+        }
+
+        .about-content p {
+          font-size: 0.95rem;
+        }
+
+        .about-content img {
+          width: 80%;
+        }
+
+        .back-btn {
+          padding: 8px 16px;
+          font-size: 0.9rem;
+          margin: 15px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="history.back()" class="back-btn">← Back</button>
+
+    <section id="about">
+      <div class="logo-container">
+        <img
+          data-aos="fade-up"
+          src="assets/imgs/front-page/logo.svg"
+          width="600"
+          alt="Amara Lighthouse Logo"
+        />
+      </div>
+
+      <div class="about-content" data-aos="zoom-in-down">
+        <h2>About Amara Lighthouse</h2>
+        <p>
+          Amara Lighthouse is more than a project — it's a revival of Myanmar's
+          untold stories and timeless heritage. What started as a simple
+          assignment turned into a journey through ancient scripts, forgotten
+          kingdoms, and cultural treasures. We turned boredom in history class
+          into curiosity, and curiosity into creation.
+        </p>
+        <p>
+          Our mission is to make learning history fun, visual, and meaningful
+          for the younger generation. Through storytelling, games, and
+          interactive design, we bring the past to life — because to shape the
+          future, we must first understand our roots.
+        </p>
+
+        <h3>Coders From</h3>
+        <a href="https://www.ciyclub.com.mm/">
+          <img
+            src="assets/imgs/about_us/ciy_club_myanmar_cover.jpg"
+            alt="CIY Club Myanmar"
+          />
+        </a>
+      </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
