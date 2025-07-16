@@ -6,3 +6,21 @@ h5,
 h6 {
     font-family: 'Playfair Display', 'Noto Serif Myanmar', serif;
 }
+
+.row.extra-gap {
+    --bs-gutter-x: 6rem;
+    /* Horizontal gap */
+    --bs-gutter-y: 6rem;
+    /* Vertical gap */
+}
+
+/* Smooth transition for the image */
+.explore-card img {
+    transition: transform 0.4s ease;
+}
+
+/* Lift the image upwards on hover */
+.explore-card:hover img {
+    transform: translateY(-15px);
+    /* move up by 15px */
+}
