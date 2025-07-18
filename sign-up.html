@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/sign_up.css" />
+  </head>
+  <body>
+    <div>
+      <div class="d-flex">
+        <div
+          class="graphic-container p-3 d-flex justiy-content-center"
+          style="
+            background: skyblue;
+            border-top-right-radius: 100%;
+            border-bottom-right-radius: 30%;
+            width: 1000px;
+            height: 100vh; /* you decide the height */
+          "
+        >
+          <img
+            src="assets/imgs/sign-up/umbrella-logInPage-graphic.svg"
+            width="80%"
+            height="auto"
+          />
+        </div>
+
+        <div
+          class="form d-flex flex-column justify-content-center align-items-center"
+          style="height: 100vh; width: 100%"
+        >
+          <div><h2 class="fw-bold fs-1 mb-3">Get Started!</h2></div>
+          <form>
+            <div class="mb-2">
+              <label for="exampleInputEmail1" class="form-label"
+                >User-name</label
+              >
+              <input
+                type="text"
+                class="form-control custom-input"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Your name"
+              />
+            </div>
+            <div class="mb-2">
+              <label for="exampleInputPassword1" class="form-label"
+                >E-mail Address</label
+              >
+              <input
+                type="password"
+                class="form-control custom-input"
+                id="exampleInputPassword1"
+                placeholder="Your e-mail"
+              />
+            </div>
+            <div class="mb-2">
+              <label for="password" class="form-label">Password</label>
+              <div class="d-flex align-items-center border rounded p-2">
+                <input
+                  type="password"
+                  class="form-control border-0 shadow-none"
+                  id="password"
+                  placeholder="Create a password"
+                  style="flex: 1"
+                />
+                <img
+                  id="eyeIcon"
+                  src="assets/imgs/sign-up/eye-closed-icon.svg"
+                  style="width: 24px; cursor: pointer"
+                />
+              </div>
+            </div>
+
+            <div class="mb-2 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="exampleCheck1"
+              />
+              <label class="form-check-label" for="exampleCheck1"
+                >Check me out</label
+              >
+            </div>
+            <button
+              type="submit"
+              class="btn fw-bold text-white"
+              style="width: 100%; background-color: brown"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/sign-up.js"></script>
+  </body>
+</html>

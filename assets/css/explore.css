@@ -13,6 +13,21 @@ h6 {
     --bs-gutter-y: 6rem;
     /* Vertical gap */
 }
+.back-btn {
+    background-color: #643b47;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px;
+    transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #4a2e38;
+}
 
 /* Smooth transition for the image */
 .explore-card img {
