@@ -1,11 +1,192 @@
-*{
-    margin:0px;
-    padding:0px;
+/* ==============================
+    RESET DEFAULT BROWSER STYLES
+============================== */
+* {
+    margin: 0px;
+    padding: 0px;
 }
 
+/* ==============================
+    GENERAL INPUT STYLES
+============================== */
 .custom-input {
     width: 300px;
     height: 40px;
+    background-color: antiquewhite;
     font-size: 15px;
-    border-radius:30px;
+    border-radius: 0px;
+    border: 0px;
+    border-bottom: solid black 1px;
+}
+
+/* Remove hover and focus effect for inputs */
+input.form-control:hover,
+input.form-control:focus {
+    border-radius: 0px;
+    box-shadow: none;
+    border-color: #ced4da;
+    background-color: antiquewhite;
+    outline: none;
+}
+
+/* Keep input flat always without box-shadow */
+input.form-control {
+    box-shadow: none;
+    outline: none;
+}
+
+/* Password input box layout */
+.password-input-box {
+    display: flex;
+}
+
+/* Highlight effect when hovering or focusing on custom input */
+.custom-input:hover,
+.custom-input:focus-within {
+    border-bottom: solid black 3px;
+    box-shadow: none;
+    background-color: rgb(250, 235, 215);
+}
+
+/* ==============================
+    BACKGROUND COLORS
+============================== */
+/* General background for sections */
+.custom-background {
+    background-color: antiquewhite;
+}
+
+/* Background for the whole body */
+.custom-body-background {
+    background-color: antiquewhite;
+}
+
+/* ==============================
+    OVERRIDE DUPLICATE CUSTOM INPUT STYLING
+============================== */
+/* Slightly rounded input box corners */
+.custom-input {
+    border-radius: 10px;
+}
+
+/* ==============================
+    GRAPHIC SECTION STYLES (LEFT SIDE)
+============================== */
+.graphic-container {
+    background: brown;
+    border-top-right-radius: 100%;
+    /* Rounded top-right corner */
+    border-bottom-right-radius: 30%;
+    /* Rounded bottom-right corner */
+    width: 650px;
+    /* Fixed width */
+    height: 100vh;
+    /* Full viewport height */
+}
+
+/* ==============================
+    FORM SECTION STYLES (RIGHT SIDE)
+============================== */
+.form {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Heading font size */
+h2 {
+    font-size: 1.8rem;
+}
+
+/* ==============================
+    RESPONSIVE DESIGN STARTS
+============================== */
+
+/* ============ TABLET DEVICES (max-width: 992px) ============ */
+@media (max-width: 992px) {
+
+    /* Body background switches to brown */
+    .custom-body-background {
+        background-color: brown;
+    }
+
+    /* Adjust graphic section */
+    .graphic-container {
+        width: 50vw;
+        border-top-right-radius: 0%;
+        border-bottom-right-radius: 0%;
+    }
+
+    /* Heading becomes smaller */
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Form section gets smaller padding and background */
+    .form {
+        padding: 15px;
+        background-color: antiquewhite;
+    }
+}
+
+/* ============ MOBILE DEVICES (max-width: 768px) ============ */
+@media (max-width: 768px) {
+
+    /* Stack elements vertically */
+    .d-flex {
+        flex-direction: column;
+    }
+
+    /* Graphic section adjusts for mobile */
+    .graphic-container {
+        width: 100%;
+        height: 300px;
+        border-radius: 0;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Responsive image */
+    .graphic-container img {
+        width: 80%;
+    }
+
+    /* Form section responsive adjustments */
+    .form {
+        border-radius: 20px;
+        width: 95%;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    /* Heading font smaller */
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* ============ VERY SMALL DEVICES (max-width: 480px) ============ */
+@media (max-width: 480px) {
+
+    /* Further reduce heading font size */
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    /* Graphic height reduces */
+    .graphic-container {
+        height: 200px;
+    }
+
+    /* Smaller padding on form */
+    .form {
+        padding: 10px;
+    }
+
+    /* Smaller button font */
+    .btn {
+        font-size: 1rem;
+    }
 }
