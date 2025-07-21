@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags for character encoding and responsiveness -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page title -->
+    <title>Document</title>
+
+    <!-- Bootstrap CSS for layout and components -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    />
+
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="assets/css/log-in.css" />
+  </head>
+
+  <body class="custom-body-background">
+    <!-- Main container -->
+    <div>
+      <!-- Flex container to split screen into two sections -->
+      <div class="d-flex">
+        <!-- Left Graphic Section -->
+        <div class="graphic-container p-3 d-flex justify-content-center">
+          <!-- GIF image inside graphic section -->
+          <img
+            src="assets/imgs/log-in/padauk-logIn-page-graphic.svg"
+            width="100%"
+            height="auto"
+          />
+        </div>
+
+        <!-- Right Form Section -->
+        <div
+          class="form d-flex flex-column justify-content-center align-items-center"
+          style="height: 100vh; width: 100%"
+        >
+          <!-- Logo and Heading inside flex for horizontal alignment -->
+          <div class="d-flex align-items-center justify-content-center mb-4">
+            <!-- Logo -->
+            <div class="me-3">
+              <img
+                src="assets/imgs/front-page/logo-small.svg"
+                style="width: 100px"
+                alt="Logo"
+              />
+            </div>
+
+            <!-- Welcome Message -->
+            <div class="text-center p-3">
+              <h2 class="fw-bold fs-4 mb-0">
+                Welcome to Amara Lighthouse<br />Start Your Journey Today!
+              </h2>
+            </div>
+          </div>
+
+          <!-- Sign-Up Form Starts -->
+          <form>
+            <!-- Name Input -->
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label fw-bold"
+                >Name</label
+              >
+              <input
+                type="text"
+                class="form-control custom-background custom-input"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Your name"
+              />
+            </div>
+
+            <!-- Email Input -->
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label fw-bold"
+                >E-mail Address</label
+              >
+              <input
+                type="email"
+                class="form-control custom-input custom-background shadow-none"
+                id="exampleInputPassword1"
+                placeholder="Your e-mail"
+              />
+            </div>
+
+            <!-- Password Input with Eye Icon -->
+            <div class="mb-3">
+              <label for="password" class="form-label fw-bold">Password</label>
+
+              <!-- Password Input Row with Icon -->
+              <div
+                class="password-input-box custom-input rounded p-2 custom-input custom-background"
+              >
+                <!-- Password Field -->
+                <input
+                  type="password"
+                  class="form-control border-0 custom-background"
+                  id="password"
+                  placeholder="Create a password"
+                  style="flex: 1"
+                />
+                <!-- Eye Icon for Show/Hide Password -->
+                <img
+                  id="eyeIcon"
+                  src="assets/imgs/sign-up/eye-closed-icon.svg"
+                  style="width: 24px; cursor: pointer"
+                />
+              </div>
+            </div>
+
+            <!-- Sign-Up Button -->
+            <button
+              type="submit"
+              class="btn mt-3 fw-bold text-white"
+              style="width: 100%; background-color: brown"
+            >
+              Sign-up
+            </button>
+          </form>
+          <!-- End of Form -->
+
+          <!-- Login Link for users who already have an account -->
+          <div class="mt-2">
+            <p>Already have an account? <a href="#">Log-in</a></p>
+          </div>
+        </div>
+        <!-- End Right Section -->
+      </div>
+      <!-- End Flex Container -->
+    </div>
+
+    <!-- External JavaScript file -->
+    <script src="assets/js/sign-up.js"></script>
+  </body>
+</html>
