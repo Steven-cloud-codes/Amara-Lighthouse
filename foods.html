@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic meta tags for character encoding and responsiveness -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Foods</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Bootstrap 5.3 CSS for responsive grid system and components -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap JavaScript Bundle (for responsive features if needed) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom CSS section -->
+    <style>
+      /* Sets the global font */
+      .main-container {
+        font-family: Arial, sans-serif;
+      }
+
+      /* Makes all images responsive */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Adjusts padding for the ingredient list */
+      .ingredients ol {
+        padding-left: 1.5rem;
+      }
+
+      /* Custom button style for "Watch Video" */
+      .btn-custom {
+        background-color: rgb(255, 181, 181);
+        font-size: 1.2rem;
+        padding: 10px 20px;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <!-- ======================= BANNER ======================= -->
+      <section class="banner">
+        <!-- Main header banner -->
+        <div class="container-fluid border text-center py-4">
+          <h1 class="fs-1 fw-bold mb-4">Discover Myanmar Rich Foods</h1>
+          <h4>The art of Myanmar’s traditional cuisine</h4>
+        </div>
+      </section>
+
+      <!-- ======================= MOHINGA SECTION ======================= -->
+      <section class="monhingha container-lg mt-3 border border-danger">
+        <!-- Section heading -->
+        <h3 class="fw-bold fs-1 border p-3">Mohinga (မုန့်ဟင်းခါး)</h3>
+
+        <!-- History and culture description + image -->
+        <div
+          data-aos="fade-up"
+          class="container-fluid border d-flex flex-column flex-md-row gap-3 p-4"
+          style="background-color: rgb(255, 244, 181)"
+        >
+          <!-- Text description -->
+          <div class="flex-fill fs-5 d-flex align-items-center">
+            <!-- You can customize the font-size or text color here -->
+            Mohinga is considered Myanmar’s national dish, traditionally eaten
+            for breakfast but loved all day long. Historical records trace its
+            roots back to ancient times when fish was abundant along Myanmar’s
+            riverbanks. It was a staple in the royal court and common villages
+            alike — symbolizing unity and simplicity.
+          </div>
+
+          <!-- Main food image -->
+          <div class="flex-shrink-0 border rounded">
+            <img
+              src="assets/imgs/foods/monhingha-img.jpg"
+              alt="Mohinga Image"
+              style="width: 300px"
+              class="border rounded"
+            />
+          </div>
+        </div>
+
+        <!-- Ingredients section -->
+        <div class="ingredients container-fluid border mt-3">
+          <div class="d-flex flex-column flex-md-row gap-3 p-4">
+            <!-- Side image of ingredients -->
+            <div class="border rounded">
+              <img
+                src="https://yummycalories.com/wp-content/uploads/2021/01/img_2853.jpg"
+                alt="Ingredients"
+                style="width: 300px"
+              />
+            </div>
+
+            <!-- Ingredient list with ordered list -->
+            <div
+              class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
+              style="background-color: rgb(243, 255, 181)"
+            >
+              <h3 class="fw-bold mb-3">Main Ingredients</h3>
+              <ol class="fs-4">
+                <li>Rice noodles</li>
+                <li>Catfish (or any freshwater fish)</li>
+                <li>Lemongrass, banana stem, ginger, and garlic</li>
+                <li>Toasted rice powder (for thickening)</li>
+                <li>Boiled eggs</li>
+                <li>Crispy fritters and onions for toppings</li>
+              </ol>
+
+              <!-- Responsive Watch Video Button -->
+              <button
+                onclick="window.open('https://youtu.be/l1KgsWd_GOE', '_blank')"
+                type="button"
+                class="btn btn-custom w-100 w-md-50 mt-3"
+              >
+                Watch Video
+              </button>
+            </div>
+          </div>
+
+          <!-- Cultural significance note -->
+          <div class="border mt-3 text-center p-4">
+            <h4>
+              In Myanmar, Mohinga represents community — it’s served during
+              festivals, religious ceremonies, and street food stalls, reminding
+              people of their shared traditions.
+            </h4>
+          </div>
+        </div>
+      </section>
+
+      <!-- Repeat the same layout structure for the other foods -->
+      <!-- ======================= LAPHET THOKE SECTION ======================= -->
+      <section class="laphet-thoke container-lg border border-danger mt-5">
+        <h3 class="fw-bold fs-1 border p-3">Laphet Thoke (လက်ဖက်သုတ်)</h3>
+
+        <!-- History -->
+        <div
+          class="container-fluid border d-flex flex-column flex-md-row gap-3 p-4"
+          style="background-color: rgb(255, 244, 181)"
+        >
+          <div class="flex-fill fs-5 d-flex align-items-center">
+            Laphet (fermented tea leaves) has been consumed since ancient
+            Myanmar kingdoms, especially in Upper Myanmar. Tea leaf fermentation
+            was both a preservation method and a way to celebrate victory and
+            social bonding. Offering Laphet was a symbol of friendship and
+            respect.
+          </div>
+
+          <!-- Main food image -->
+          <div class="flex-shrink-0 border rounded">
+            <img
+              src="https://myanmarlifefood.com/wp-content/uploads/2023/11/Laphet-Thoke.jpg"
+              alt="Laphet Thoke Image"
+              style="width: 300px"
+              class="border rounded"
+            />
+          </div>
+        </div>
+
+        <!-- Ingredients -->
+        <div class="ingredients container-fluid border mt-3">
+          <div class="d-flex flex-column flex-md-row gap-3 p-4">
+            <div class="border rounded">
+              <img
+                src="https://cdn.tasteatlas.com//images/dishes/cf7cf56ba89f4fc4987a7fc8b738ab47.jpg"
+                alt="Laphet Ingredients"
+                style="width: 300px"
+              />
+            </div>
+
+            <div
+              class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
+              style="background-color: rgb(243, 255, 181)"
+            >
+              <h3 class="fw-bold mb-3">Main Ingredients</h3>
+              <ol class="fs-4">
+                <li>Fermented tea leaves</li>
+                <li>Roasted peanuts, fried garlic</li>
+                <li>Toasted sesame seeds</li>
+                <li>Dried shrimp</li>
+                <li>Tomatoes, cabbage</li>
+                <li>Lime juice and chili</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Cultural Note -->
+          <div class="border mt-3 text-center p-4">
+            <h4>
+              Laphet Thoke is more than food — it’s a symbol of peace offerings,
+              often used in ceremonies to settle disputes and celebrate
+              agreements in the Konbaung dynasty.
+            </h4>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= SHAN NOODLES SECTION ======================= -->
+      <section class="shan-noodles container-lg border border-danger mt-5">
+        <h3 class="fw-bold fs-1 border p-3">Shan Noodles (ရှမ်းခေါက်ဆွဲ)</h3>
+
+        <div
+          class="container-fluid border d-flex flex-column flex-md-row gap-3 p-4"
+          style="background-color: rgb(255, 244, 181)"
+        >
+          <div class="flex-fill fs-5 d-flex align-items-center">
+            Shan noodles originate from Shan State, where the Shan ethnic group
+            resides. The Shan kingdom had trade connections with China and
+            Thailand, influencing the noodle’s mild, clean, and savory flavor.
+            It’s a classic example of ethnic diversity in Myanmar food culture.
+          </div>
+
+          <div class="flex-shrink-0 border rounded">
+            <img
+              src="https://cdn.tasteatlas.com//images/dishes/661b3dc703684c388e3802fa46f2cf72.jpg"
+              alt="Shan Noodles Image"
+              style="width: 300px"
+              class="border rounded"
+            />
+          </div>
+        </div>
+
+        <div class="ingredients container-fluid border mt-3">
+          <div class="d-flex flex-column flex-md-row gap-3 p-4">
+            <div class="border rounded">
+              <img
+                src="https://cdn.tasteatlas.com//images/dishes/f7db7e9f7dcf4514871f0b334e348e60.jpg"
+                alt="Shan Noodles Ingredients"
+                style="width: 300px"
+              />
+            </div>
+
+            <div
+              class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
+              style="background-color: rgb(243, 255, 181)"
+            >
+              <h3 class="fw-bold mb-3">Main Ingredients</h3>
+              <ol class="fs-4">
+                <li>Rice noodles (flat or round)</li>
+                <li>Marinated chicken or pork (with light soy sauce)</li>
+                <li>Fried garlic oil</li>
+                <li>Pickled mustard greens</li>
+                <li>Tomato-based sauce</li>
+                <li>Fresh spring onions</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="border mt-3 text-center p-4">
+            <h4>
+              Shan noodles are associated with hospitality in the hills and are
+              beloved by both locals and travelers. They highlight the
+              simplicity and warmth of Shan culture, often served in Shan tea
+              shops and homes.
+            </h4>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
