@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic HTML head setup with Bootstrap CDN for styling -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>History</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Optional: Add your own custom CSS here -->
+    <style>
+      .banner {
+        background-image: url("your-banner-image.jpg"); /* Replace with your actual banner */
+        background-size: cover;
+        background-position: center;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .banner h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.2); /* Background for contrast */
+        padding: 35px;
+        border-radius: 8px;
+        color: white;
+      }
+
+      .intro img {
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Hero banner section -->
+    <div class="container-fluid banner border">
+      <h1>History</h1>
+    </div>
+
+    <!-- Main content container -->
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <!-- Image first on small screens, second on large screens -->
+        <div class="col-lg-6 text-center order-1 order-lg-2 mb-4 mb-lg-0">
+          <img
+            src="assets/imgs/history/bandulaOnHorse-intro.svg"
+            alt="General Bandula on Horse"
+            class="img-fluid"
+            style="max-width: 90%; height: auto"
+          />
+        </div>
+
+        <!-- Text second on small screens, first on large screens -->
+        <div class="col-lg-6 text-center text-lg-start order-2 order-lg-1">
+          <h2 class="mb-4 fw-bold">Myanmar History</h2>
+          <h5 class="fs-5">
+            Myanmar, once known as Burma, has a history that spans over 2,000
+            years. It was home to the ancient Pyu city-states and later the
+            powerful Bagan Kingdom, famous for its thousands of Buddhist
+            temples. Over the centuries, great dynasties like the Taungoo and
+            Konbaung rose and expanded the nation, shaping its culture,
+            religion, and traditions. From golden pagodas to royal courts,
+            Myanmar’s past is filled with stories of strength, wisdom, and rich
+            heritage that still inspire today.
+          </h5>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
