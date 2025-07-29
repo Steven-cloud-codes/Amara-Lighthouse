@@ -21,10 +21,9 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Optional: Add your own custom CSS here -->
     <style>
       .banner {
-        background-image: url("your-banner-image.jpg"); /* Replace with your actual banner */
+        background-image: url("your-banner-image.jpg");
         background-size: cover;
         background-position: center;
         height: 300px;
@@ -36,7 +35,7 @@
       .banner h1 {
         font-size: 3rem;
         font-weight: bold;
-        background-color: rgba(0, 0, 0, 0.2); /* Background for contrast */
+        background-color: rgba(0, 0, 0, 0.2);
         padding: 35px;
         border-radius: 8px;
         color: white;
@@ -46,6 +45,127 @@
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       }
+
+      /*======================= Time-line Start========================*/
+      .timeline-section {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      @media (min-width: 768px) {
+        .timeline-section {
+          flex-direction: row;
+        }
+      }
+
+      /* Timeline styles */
+      .timeline {
+        width: 100%;
+        height: 40vh;
+        overflow-y: auto;
+        scrollbar-width: none;
+        padding-left: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: y mandatory;
+      }
+
+      .timeline::-webkit-scrollbar {
+        display: none;
+      }
+
+      .timeline-title {
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 15px;
+        border-left: 3px solid black;
+        transition: all 0.3s ease-in-out;
+        scroll-snap-align: start;
+      }
+
+      .timeline-title.active {
+        font-size: 1.5em;
+        color: black;
+        font-weight: bold;
+      }
+
+      .timeline-title span {
+        font-size: 0.8em;
+        color: #555;
+        margin-top: 5px;
+      }
+
+      /* Content styles */
+      .content-container {
+        width: 100%;
+        height: 60vh;
+        position: relative;
+      }
+
+      .content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        font-size: 1rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .content.active {
+        opacity: 1;
+      }
+
+      .content p {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+        border-radius: 8px;
+        max-width: 90%;
+      }
+
+      /* Desktop styles */
+      @media (min-width: 768px) {
+        .timeline {
+          width: 30%;
+          height: 100vh;
+          padding-left: 40px;
+        }
+
+        .timeline-title {
+          height: 100vh;
+          padding: 40px 20px;
+        }
+
+        .timeline-title.active {
+          font-size: 2em;
+        }
+
+        .content-container {
+          width: 70%;
+          height: 100vh;
+        }
+
+        .content {
+          padding: 60px;
+          font-size: 1.5rem;
+        }
+      }
+      /*======================= Time-line End========================*/
     </style>
   </head>
 
@@ -58,7 +178,6 @@
     <!-- Main content container -->
     <div class="container py-5">
       <div class="row align-items-center">
-        <!-- Image first on small screens, second on large screens -->
         <div class="col-lg-6 text-center order-1 order-lg-2 mb-4 mb-lg-0">
           <img
             src="assets/imgs/history/bandulaOnHorse-intro.svg"
@@ -68,7 +187,6 @@
           />
         </div>
 
-        <!-- Text second on small screens, first on large screens -->
         <div class="col-lg-6 text-center text-lg-start order-2 order-lg-1">
           <h2 class="mb-4 fw-bold">Myanmar History</h2>
           <h5 class="fs-5">
@@ -78,11 +196,137 @@
             temples. Over the centuries, great dynasties like the Taungoo and
             Konbaung rose and expanded the nation, shaping its culture,
             religion, and traditions. From golden pagodas to royal courts,
-            Myanmar’s past is filled with stories of strength, wisdom, and rich
+            Myanmar's past is filled with stories of strength, wisdom, and rich
             heritage that still inspire today.
           </h5>
         </div>
       </div>
     </div>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+      <div class="timeline">
+        <div class="timeline-title" data-index="0">
+          Pyu City States <span>2nd century BCE – 11th century CE</span>
+        </div>
+        <div class="timeline-title" data-index="1">
+          Bagan Empire <span>1044 – 1287</span>
+        </div>
+        <div class="timeline-title" data-index="2">
+          Colonial Period <span>1824 – 1948</span>
+        </div>
+        <div class="timeline-title" data-index="3">
+          Independence Era <span>1948 – present</span>
+        </div>
+      </div>
+
+      <div class="content-container">
+        <div
+          class="content"
+          data-bg="https://livingnomads.com/wp-content/uploads/2018/05/15/myanmar-king-anawrahta.jpg"
+        >
+          <p>
+            The Pyu city-states were among the earliest civilizations in
+            Myanmar, known for their brick cities and Buddhist influence.
+          </p>
+        </div>
+        <div
+          class="content"
+          data-bg="https://source.unsplash.com/1600x900/?temple"
+        >
+          <p>
+            The Bagan Empire unified Myanmar under King Anawrahta and built over
+            10,000 temples.
+          </p>
+        </div>
+        <div
+          class="content"
+          data-bg="https://source.unsplash.com/1600x900/?colonial-british"
+        >
+          <p>
+            During British colonial rule, Myanmar became part of British India,
+            bringing infrastructure and resistance.
+          </p>
+        </div>
+        <div
+          class="content"
+          data-bg="https://source.unsplash.com/1600x900/?independence"
+        >
+          <p>
+            After independence in 1948, Myanmar has undergone political changes
+            and cultural growth.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const timeline = document.querySelector(".timeline");
+        const timelineTitles = document.querySelectorAll(".timeline-title");
+        const contentSections = document.querySelectorAll(".content");
+
+        // Initialize first content as active
+        timelineTitles[0].classList.add("active");
+        contentSections[0].classList.add("active");
+        contentSections[0].style.backgroundImage = `url('${contentSections[0].dataset.bg}')`;
+
+        // Set up intersection observer for scroll-based activation
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const index = entry.target.dataset.index;
+
+                // Update active states
+                timelineTitles.forEach((title) =>
+                  title.classList.remove("active")
+                );
+                contentSections.forEach((section) =>
+                  section.classList.remove("active")
+                );
+
+                entry.target.classList.add("active");
+                contentSections[index].classList.add("active");
+                contentSections[
+                  index
+                ].style.backgroundImage = `url('${contentSections[index].dataset.bg}')`;
+              }
+            });
+          },
+          {
+            root: timeline,
+            threshold: 0.5,
+            rootMargin: "0px 0px -50% 0px",
+          }
+        );
+
+        // Observe all timeline titles
+        timelineTitles.forEach((title) => {
+          observer.observe(title);
+        });
+
+        // Handle window resize to adjust for mobile/desktop
+        function handleResize() {
+          if (window.innerWidth >= 768) {
+            // Desktop - make each timeline title take full viewport height
+            timelineTitles.forEach((title) => {
+              title.style.height = "100vh";
+            });
+            timeline.style.height = "100vh";
+          } else {
+            // Mobile - make each timeline title take partial height
+            timelineTitles.forEach((title) => {
+              title.style.height = "40vh";
+            });
+            timeline.style.height = "40vh";
+          }
+        }
+
+        // Initial setup
+        handleResize();
+        window.addEventListener("resize", handleResize);
+      });
+    </script>
   </body>
 </html>
