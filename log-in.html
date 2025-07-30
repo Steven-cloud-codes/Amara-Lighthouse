@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Meta tags for character encoding and responsiveness -->
+    <!-- ===== META TAGS ===== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Page title -->
     <title>Document</title>
 
-    <!-- Bootstrap CSS for layout and components -->
+    <!-- ===== CSS LINKS ===== -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
     />
-
-    <!-- Your custom CSS -->
     <link rel="stylesheet" href="assets/css/log-in.css" />
+
+    <!-- ===== FIREBASE SDK ===== -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   </head>
 
   <body class="custom-body-background">
-    <!-- Main container -->
+    <!-- ===== MAIN CONTAINER ===== -->
     <div>
-      <!-- Flex container to split screen into two sections -->
       <div class="d-flex">
-        <!-- Left Graphic Section -->
+        <!-- LEFT GRAPHIC SECTION -->
         <div class="graphic-container p-3 d-flex justify-content-center">
-          <!-- GIF image inside graphic section -->
           <img
             src="assets/imgs/log-in/padauk-logIn-page-graphic.svg"
             width="100%"
@@ -33,14 +31,13 @@
           />
         </div>
 
-        <!-- Right Form Section -->
+        <!-- RIGHT FORM SECTION -->
         <div
           class="form d-flex flex-column justify-content-center align-items-center"
           style="height: 100vh; width: 100%"
         >
-          <!-- Logo and Heading inside flex for horizontal alignment -->
+          <!-- LOGO & HEADING -->
           <div class="d-flex align-items-center justify-content-center mb-4">
-            <!-- Logo -->
             <div class="me-3">
               <img
                 src="assets/imgs/front-page/logo-small.svg"
@@ -48,91 +45,120 @@
                 alt="Logo"
               />
             </div>
-
-            <!-- Welcome Message -->
             <div class="text-center p-3">
               <h2 class="fw-bold fs-4 mb-0">
-                Welcome to Amara Lighthouse<br />Start Your Journey Today!
+                Welcome Back!!<br />Ready to explore again?
               </h2>
             </div>
           </div>
 
-          <!-- Sign-Up Form Starts -->
-          <form>
-            <!-- Name Input -->
+          <!-- LOGIN FORM -->
+          <form id="loginForm">
+            <!-- EMAIL INPUT -->
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label fw-bold"
-                >Name</label
-              >
-              <input
-                type="text"
-                class="form-control custom-background custom-input"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Your name"
-              />
-            </div>
-
-            <!-- Email Input -->
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label fw-bold"
-                >E-mail Address</label
-              >
+              <label class="form-label fw-bold">E-mail Address</label>
               <input
                 type="email"
                 class="form-control custom-input custom-background shadow-none"
-                id="exampleInputPassword1"
+                id="loginEmail"
                 placeholder="Your e-mail"
               />
             </div>
 
-            <!-- Password Input with Eye Icon -->
+            <!-- PASSWORD INPUT -->
             <div class="mb-3">
-              <label for="password" class="form-label fw-bold">Password</label>
-
-              <!-- Password Input Row with Icon -->
+              <label class="form-label fw-bold">Password</label>
               <div
                 class="password-input-box custom-input rounded p-2 custom-input custom-background"
               >
-                <!-- Password Field -->
                 <input
                   type="password"
                   class="form-control border-0 custom-background"
-                  id="password"
-                  placeholder="Create a password"
+                  id="loginPassword"
+                  placeholder="Your Password"
                   style="flex: 1"
                 />
-                <!-- Eye Icon for Show/Hide Password -->
                 <img
                   id="eyeIcon"
                   src="assets/imgs/sign-up/eye-closed-icon.svg"
                   style="width: 24px; cursor: pointer"
                 />
               </div>
+              <div class="mt-2 text-start">
+                <a href="#" id="forgotPasswordLink" class="text-decoration-none"
+                  >Forgot password?</a
+                >
+              </div>
             </div>
 
-            <!-- Sign-Up Button -->
+            <!-- SUBMIT BUTTON -->
             <button
               type="submit"
               class="btn mt-3 fw-bold text-white"
               style="width: 100%; background-color: brown"
             >
-              Sign-up
+              Log-in
             </button>
           </form>
-          <!-- End of Form -->
 
-          <!-- Login Link for users who already have an account -->
+          <!-- SIGNUP LINK -->
           <div class="mt-2">
-            <p>Already have an account? <a href="#">Log-in</a></p>
+            <p>New to Amara Lighthouse? <a href="sign-up.html">Sign-up</a></p>
           </div>
         </div>
-        <!-- End Right Section -->
       </div>
-      <!-- End Flex Container -->
     </div>
 
-    <!-- External JavaScript file -->
-    <script src="assets/js/sign-up.js"></script>
+    <!-- ===== PASSWORD RESET MODAL ===== -->
+    <div class="modal fade" id="resetPasswordModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header text-white" style="background-color: brown">
+            <h5 class="modal-title">Reset Password</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Enter your email to receive a reset link:</p>
+            <input
+              type="email"
+              id="resetEmail"
+              class="form-control mb-3"
+              placeholder="Your email"
+            />
+            <button
+              id="sendResetLinkBtn"
+              class="btn btn-primary"
+              style="background-color: brown"
+            >
+              Send Link
+            </button>
+            <div id="resetMessage" class="mt-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/log-in.js"></script>
+    <script>
+      // Password visibility toggle
+      let eyeIcon = document.getElementById("eyeIcon");
+      let password = document.getElementById("loginPassword");
+
+      eyeIcon.onclick = function () {
+        if (password.type == "password") {
+          password.type = "text";
+          eyeIcon.src = "assets/imgs/sign-up/eye-opened-icon.svg";
+        } else {
+          password.type = "password";
+          eyeIcon.src = "assets/imgs/sign-up/eye-closed-icon.svg";
+        }
+      };
+    </script>
   </body>
 </html>
