@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Myanmar Creatives</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* ================ BASE STYLES ================ */
+      section {
+        margin-bottom: 4rem;
+      }
+
+      /* ================ AUTHORS SECTION ================ */
+      .author-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 3rem;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .author-img-container {
+        flex: 0 0 200px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .author-img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .author-content {
+        flex: 1;
+        padding: 20px;
+        border-right: 1px solid #eee;
+      }
+
+      .book-slider-container {
+        flex: 0 0 220px;
+        padding: 20px;
+      }
+
+      .book-slider {
+        position: relative;
+        height: 200px;
+        width: 150px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 4px;
+        cursor: pointer;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .book-slider img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        opacity: 0;
+        transform: translateX(100%);
+      }
+
+      .book-slider img.active {
+        opacity: 1;
+        transform: translateX(0);
+        z-index: 2;
+      }
+
+      .book-slider img.previous {
+        transform: translateX(-100%);
+        opacity: 0;
+        z-index: 1;
+      }
+
+      /* ================ ARTISTS GALLERY ================ */
+      .artist-gallery {
+        background-color: #f8f9fa;
+        padding: 3rem 0;
+      }
+
+      .artist-card {
+        position: relative;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        margin-bottom: 2rem;
+        height: 100%;
+      }
+
+      .artist-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .artist-header {
+        position: relative;
+        height: 200px;
+
+        background: #f0f0f0;
+        margin-bottom: 40px;
+        z-index: 1;
+      }
+
+      .artist-main-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        position: relative;
+        z-index: 1;
+      }
+
+      .artist-profile {
+        position: absolute;
+        bottom: -30px;
+        left: 20px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        background: white;
+        overflow: hidden;
+        z-index: 10; /* This ensures it appears above the banner */
+      }
+
+      .artist-profile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .artist-body {
+        padding: 20px;
+      }
+
+      .artist-name {
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .artist-specialty {
+        color: #6c757d;
+        font-style: italic;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .artist-bio {
+        color: #555;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .artist-gallery-grid {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .gallery-thumb {
+        width: 60px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .gallery-thumb:hover {
+        transform: scale(1.1);
+        border-color: #6c757d;
+      }
+
+      .gallery-thumb.active-thumb {
+        border-color: #6c757d;
+        transform: scale(1.05);
+      }
+
+      /* ================ FILM STARS SECTION ================ */
+      .film-strip {
+        position: relative;
+        background: #000;
+        padding: 2rem 0;
+        overflow: hidden;
+      }
+
+      .film-strip::before,
+      .film-strip::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: repeating-linear-gradient(
+          to right,
+          #000 0px,
+          #000 10px,
+          #333 10px,
+          #333 20px
+        );
+      }
+
+      .film-strip::before {
+        top: 0;
+      }
+
+      .film-strip::after {
+        bottom: 0;
+      }
+
+      .actor-card {
+        transition: transform 0.3s ease;
+        border: 3px solid transparent;
+      }
+
+      .actor-card:hover {
+        transform: scale(1.03);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .actor-img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 0;
+      }
+
+      .spotlight {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .spotlight::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        right: -50%;
+        bottom: -50%;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        transform: rotate(30deg);
+        pointer-events: none;
+      }
+
+      /* ================ RESPONSIVE ADJUSTMENTS ================ */
+      @media (max-width: 992px) {
+        .author-row {
+          flex-direction: column;
+        }
+
+        .author-img-container {
+          padding-top: 30px;
+        }
+
+        .author-content {
+          border-right: none;
+          border-bottom: 1px solid #eee;
+          text-align: center;
+        }
+
+        .book-slider-container {
+          width: 100%;
+          padding-bottom: 30px;
+        }
+
+        .book-slider {
+          width: 120px;
+        }
+
+        .artist-profile {
+          width: 60px;
+          height: 60px;
+          bottom: -20px;
+          left: 15px;
+        }
+
+        .artist-header {
+          margin-bottom: 30px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .artist-gallery-grid {
+          gap: 8px;
+        }
+
+        .gallery-thumb {
+          width: 50px;
+          height: 70px;
+        }
+
+        .artist-profile {
+          width: 50px;
+          height: 50px;
+          bottom: -15px;
+          left: 10px;
+        }
+
+        .artist-header {
+          margin-bottom: 25px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Authors Section -->
+    <div class="container py-5" id="authors">
+      <section id="authors">
+        <h1 class="text-center mb-5">Famous Myanmar Authors</h1>
+
+        <!-- Author 1 - Khin Khin Htoo -->
+        <div class="author-row">
+          <div class="author-img-container">
+            <img
+              src="https://burma.irrawaddy.com/wp-content/uploads/2023/07/Khin-Khin-Htoo.jpg"
+              class="author-img"
+              alt="Khin Khin Htoo"
+            />
+          </div>
+
+          <div class="author-content">
+            <h3>Khin Khin Htoo</h3>
+            <p>
+              Born in 1965. A popular modern writer known for realistic and
+              emotional novels like Ma Thudamasari. Her stories often center on
+              women's lives, love, and rural Myanmar.
+            </p>
+          </div>
+
+          <div class="book-slider-container">
+            <div class="book-slider" onclick="nextWork(this)">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVpTjfWs9hCxc-a29TRtPAy4wv5LiP9QDtHQ&s"
+                class="active"
+              />
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3Pc4UtwKI6IAOXtHBWBfiiExdkI6kq1eEQoadweTXXDM16y_5TUdaaWFd1DCXPaO8Wuo&usqp=CAU"
+              />
+              <img src="https://via.placeholder.com/150x200?text=Third+Book" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Author 2 - Sample Author -->
+        <div class="author-row">
+          <div class="author-img-container">
+            <img
+              src="https://via.placeholder.com/150?text=Author+2"
+              class="author-img"
+              alt="Author 2"
+            />
+          </div>
+
+          <div class="author-content">
+            <h3>Ju</h3>
+            <p>
+              Contemporary writer known for modern themes and urban stories. His
+              works often explore the challenges of youth in Yangon.
+            </p>
+          </div>
+
+          <div class="book-slider-container">
+            <div class="book-slider" onclick="nextWork(this)">
+              <img
+                src="https://via.placeholder.com/150x200?text=Yangon+Nights"
+                class="active"
+              />
+              <img
+                src="https://via.placeholder.com/150x200?text=Rainy+Season"
+              />
+              <img src="https://via.placeholder.com/150x200?text=City+Dreams" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Author 3 - Sample Author -->
+        <div class="author-row">
+          <div class="author-img-container">
+            <img
+              src="https://via.placeholder.com/150?text=Author+3"
+              class="author-img"
+              alt="Author 3"
+            />
+          </div>
+
+          <div class="author-content">
+            <h3>Phay Myint</h3>
+            <p>
+              Born in 1930, died in 2006. A respected Myanmar journalist,
+              writer, and editor. Known for his sharp political articles and
+              historical writings. He was the editor of several well-known
+              journals and contributed to the development of independent
+              journalism in Myanmar. Also known for biographies and essays on
+              political leaders.
+            </p>
+          </div>
+
+          <div class="book-slider-container">
+            <div class="book-slider" onclick="nextWork(this)">
+              <img
+                src="https://via.placeholder.com/150x200?text=Classic+Poems"
+                class="active"
+              />
+              <img
+                src="https://via.placeholder.com/150x200?text=Collected+Works"
+              />
+              <img
+                src="https://via.placeholder.com/150x200?text=Selected+Stories"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Artists Gallery Section -->
+    <section class="artist-gallery">
+      <div class="container">
+        <h1 class="text-center mb-5">Myanmar Contemporary Artists</h1>
+
+        <div class="row">
+          <!-- Artist 1 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="artist-card h-100">
+              <div class="artist-header">
+                <img
+                  src="https://source.unsplash.com/random/600x400/?painting,myanmar"
+                  alt="Artist Work"
+                  class="artist-main-image"
+                />
+                <div class="artist-profile">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV33MZcT8pq9k-vbevypm5eApJGDUePfjRmQ&s"
+                    alt="Paw Oo Thet"
+                  />
+                </div>
+              </div>
+              <div class="artist-body">
+                <h3 class="artist-name">Htein Lin</h3>
+                <div class="artist-specialty">Traditional Painter</div>
+                <p class="artist-bio">
+                  Master of traditional Burmese painting styles, known for
+                  vibrant depictions of Myanmar culture.
+                </p>
+                <div class="artist-gallery-grid">
+                  <img
+                    src="https://artworlddatabase.com/wp-content/uploads/2022/03/Htein-LinRecyled-1705-2016-Acrylic-on-recycled-cardboard-92x76-cm.-Image-from-retour-de-voyage-03-08-2022.png"
+                    class="gallery-thumb active-thumb"
+                    onclick="showArtwork(this.closest('.artist-card').querySelector('.artist-main-image'), this)"
+                  />
+                  <img
+                    src="https://asiawa.jpf.go.jp/assets/uploads/sites/3/2018/01/f-ah-htein-lin-04-1.jpg"
+                    class="gallery-thumb"
+                    onclick="showArtwork(this.closest('.artist-card').querySelector('.artist-main-image'), this)"
+                  />
+                  <img
+                    src="https://i0.wp.com/pontarte.com/wp-content/uploads/2021/11/The-Life-of-Buddha.jpg?resize=800%2C430&ssl=1"
+                    class="gallery-thumb"
+                    onclick="showArtwork(this.closest('.artist-card').querySelector('.artist-main-image'), this)"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Artist 2 -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="artist-card h-100">
+              <div class="artist-header">
+                <img
+                  src="https://source.unsplash.com/random/600x400/?abstract,art"
+                  alt="Artist Work"
+                  class="artist-main-image"
+                />
+                <div class="artist-profile">
+                  <img
+                    src="https://via.placeholder.com/150?text=Artist+2"
+                    alt="Nann Nann"
+                  />
+                </div>
+              </div>
+              <div class="artist-body">
+                <h3 class="artist-name">Nann Nann</h3>
+                <div class="artist-specialty">Abstract Artist</div>
+                <p class="artist-bio">
+                  Contemporary artist blending traditional motifs with modern
+                  abstract expressionism.
+                </p>
+                <div class="artist-gallery-grid">
+                  <img
+                    src="https://source.unsplash.com/random/300x200/?abstract,1"
+                    class="gallery-thumb active-thumb"
+                    onclick="showArtwork(this.closest('.artist-card').querySelector('.artist-main-image'), this)"
+                  />
+                  <img
+                    src="https://source.unsplash.com/random/300x200/?abstract,2"
+                    class="gallery-thumb"
+                    onclick="showArtwork(this.closest('.artist-card').querySelector('.artist-main-image'), this)"
+                  />
+                  <img
+                    src="https://source.unsplash.com/random/300x200/?abstract,3"
+                    class="gallery-thumb"
+                    onclick="showArtwork(this.closest('.artist-card').querySelector('.artist-main-image'), this)"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Artist 3 -->
+          <div class="col-lg-4 col-md-6 mb-4" id="artists">
+            <div class="artist-card h-100">
+              <div class="artist-header">
+                <img
+                  src="https://source.unsplash.com/random/600x400/?watercolor,landscape"
+                  alt="Artist Work"
+                  class="artist-main-image"
+                />
+                <div class="artist-profile">
+                  <img
+                    src="https://via.placeholder.com/150?text=Artist+3"
+                    alt="Aung Kyaw Htet"
+                  />
+                </div>
+              </div>
+              <div class="artist-body">
+                <h3 class="artist-name">Aung Kyaw Htet</h3>
+                <div class="artist-specialty">Watercolor Artist</div>
+                <p class="artist-bio">
+                  Renowned for his atmospheric watercolor landscapes capturing
+                  Myanmar's scenery.
+                </p>
+                <div class="artist-gallery-grid">
+                  <img
+                    src="https://source.unsplash.com/random/300x200/?watercolor,1"
+                    class="gallery-thumb active-thumb"
+                    onclick="showArtwork(this.closest('.artist-card').querySelector('.artist-main-image'), this)"
+                  />
+                  <img
+                    src="https://source.unsplash.com/random/300x200/?watercolor,2"
+                    class="gallery-thumb"
+                    onclick="showArtwork(this.closest('.artist-card').querySelector('.artist-main-image'), this)"
+                  />
+                  <img
+                    src="https://source.unsplash.com/random/300x200/?watercolor,3"
+                    class="gallery-thumb"
+                    onclick="showArtwork(this.closest('.artist-card').querySelector('.artist-main-image'), this)"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Actors Section -->
+    <section class="film-strip bg-dark text-white py-5" id="actors">
+      <div class="container">
+        <h1 class="text-center mb-5 display-4 fw-bold">Myanmar Film Stars</h1>
+
+        <div class="row g-4">
+          <!-- Daung -->
+          <div class="col-lg-3 col-md-6">
+            <div
+              class="actor-card h-100 bg-black p-0 overflow-hidden spotlight"
+            >
+              <img
+                src="https://i.mydramalist.com/05kvO_5f.jpg"
+                class="actor-img"
+                alt="Daung"
+              />
+              <div class="p-3">
+                <h3 class="fw-bold mb-1">Daung</h3>
+                <p class="text-muted mb-2">Action Star</p>
+                <p class="small">
+                  Known for his intense action roles and charismatic screen
+                  presence.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paing Thakon -->
+          <div class="col-lg-3 col-md-6">
+            <div
+              class="actor-card h-100 bg-black p-0 overflow-hidden spotlight"
+            >
+              <img
+                src="https://cdn-image.npnewsmm.com/applications/npnews-mm/news_articles/645d9b33e9322225555c99d3/banner-645d9b33e9322225555c99d3-x800.jpg"
+                class="actor-img"
+                alt="Paing Thakon"
+              />
+              <div class="p-3">
+                <h3 class="fw-bold mb-1">Paing Thakon</h3>
+                <p class="text-muted mb-2">Leading Man</p>
+                <p class="small">
+                  Versatile actor known for both dramatic and romantic roles.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Eaindra Kyaw Zin -->
+          <div class="col-lg-3 col-md-6">
+            <div
+              class="actor-card h-100 bg-black p-0 overflow-hidden spotlight"
+            >
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0CjK0qNtJjcV8btSzg48CdOw-IGCyFS4l-g&s"
+                class="actor-img"
+                alt="Eaindra Kyaw Zin"
+              />
+              <div class="p-3">
+                <h3 class="fw-bold mb-1">Eaindra Kyaw Zin</h3>
+                <p class="text-muted mb-2">Drama Queen</p>
+                <p class="small">
+                  Award-winning actress with powerful emotional performances.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wutt Hmone Shwe Yi -->
+          <div class="col-lg-3 col-md-6">
+            <div
+              class="actor-card h-100 bg-black p-0 overflow-hidden spotlight"
+            >
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuZ4oQS6JZr1ELw5N2-Q2Hoie8CtS0XpPcTw&s"
+                class="actor-img"
+                alt="Wutt Hmone Shwe Yi"
+              />
+              <div class="p-3">
+                <h3 class="fw-bold mb-1">Wutt Hmone Shwe Yi</h3>
+                <p class="text-muted mb-2">Romantic Lead</p>
+                <p class="small">
+                  Charming actress known for her romantic comedy roles.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Film reel decoration -->
+        <div class="text-center mt-5">
+          <div
+            class="d-inline-block px-5 py-2 bg-secondary bg-opacity-25 rounded-pill"
+          >
+            <span class="text-white-50">⋆⋆⋆</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // For Authors Section
+      function nextWork(slider) {
+        const images = slider.querySelectorAll("img");
+        let current = 0;
+
+        // Find current active image
+        images.forEach((img, index) => {
+          if (img.classList.contains("active")) {
+            current = index;
+          }
+        });
+
+        // Remove active class from current image
+        images[current].classList.remove("active");
+        images[current].classList.add("previous");
+
+        // Calculate next index
+        current = (current + 1) % images.length;
+
+        // Add active class to new current image
+        images[current].classList.add("active");
+
+        // Remove 'previous' class from all others after animation
+        setTimeout(() => {
+          images.forEach((img) => {
+            img.classList.remove("previous");
+          });
+        }, 500);
+      }
+
+      // For Artists Gallery Section
+      function showArtwork(mainImage, thumb) {
+        const thumbContainer = thumb.parentNode;
+
+        // Update active state
+        thumbContainer.querySelectorAll(".gallery-thumb").forEach((t) => {
+          t.classList.remove("active-thumb");
+        });
+        thumb.classList.add("active-thumb");
+
+        // Update main image with fade effect
+        mainImage.style.opacity = 0;
+        setTimeout(() => {
+          mainImage.src = thumb.src;
+          mainImage.style.opacity = 1;
+        }, 200);
+      }
+    </script>
+  </body>
+</html>
