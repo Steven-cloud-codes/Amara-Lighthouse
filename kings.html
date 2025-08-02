@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Great Kings of Myanmar</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Custom CSS */
+      .hero-banner {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://www.myanmartravel.com/wp-content/uploads/2020/03/Bagan-Temples-Myanmar.jpg");
+        background-size: cover;
+        background-position: center;
+        padding: 5rem 0;
+        color: white;
+        margin-bottom: 3rem;
+      }
+
+      .king-card {
+        transition: all 0.3s ease;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+
+      .king-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .king-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .crown-icon {
+        color: gold;
+        font-size: 1.25rem;
+        margin-right: 0.5rem;
+      }
+
+      .king-period {
+        color: #6c757d;
+        font-weight: 500;
+        font-style: italic;
+      }
+
+      .king-content {
+        padding: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .king-row {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .king-card {
+          flex: 0 0 calc(50% - 1rem);
+          margin-right: 1rem;
+          margin-bottom: 2rem;
+        }
+        .king-card:nth-child(2n) {
+          margin-right: 0;
+        }
+        .king-container {
+          display: flex;
+          height: 100%;
+        }
+        .king-img-container {
+          flex: 0 0 40%;
+        }
+        .king-text-container {
+          flex: 0 0 60%;
+          padding-left: 1.5rem;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .king-img {
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Banner -->
+    <div class="container-fluid hero-banner text-center">
+      <div class="container">
+        <h1 class="display-4 fw-bold mb-4">Great Kings of Myanmar</h1>
+        <p class="lead fs-4">
+          The visionary monarchs who shaped a nation's destiny
+        </p>
+      </div>
+    </div>
+
+    <!-- Kings Gallery -->
+    <div class="container mb-5">
+      <div class="king-row">
+        <!-- King 1 -->
+        <div class="king-card">
+          <div class="king-container">
+            <div class="king-img-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Anawrahta_statue.jpg/800px-Anawrahta_statue.jpg"
+                class="king-img"
+                alt="King Anawrahta"
+              />
+            </div>
+            <div class="king-text-container king-content">
+              <h5 class="card-title">King Anawrahta</h5>
+              <p class="king-period mb-2">Reign: 1044–1077</p>
+              <p class="card-text">
+                Founder of the Pagan Empire who unified Myanmar and established
+                Theravada Buddhism.
+              </p>
+              <ul class="list-unstyled">
+                <li>Founded first Burmese empire</li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Built
+                  thousands of temples
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i
+                  >Established Burmese script
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- King 2 -->
+        <div class="king-card">
+          <div class="king-container">
+            <div class="king-img-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Kyanzittha_statue.jpg/800px-Kyanzittha_statue.jpg"
+                class="king-img"
+                alt="King Kyansittha"
+              />
+            </div>
+            <div class="king-text-container king-content">
+              <h5 class="card-title">King Kyansittha</h5>
+              <p class="king-period mb-2">Reign: 1084–1112</p>
+              <p class="card-text">
+                Continued Anawrahta's work, completing religious buildings and
+                strengthening the empire.
+              </p>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Completed
+                  Ananda Temple
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Expanded
+                  trade relations
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Patron of
+                  literature
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- King 3 -->
+        <div class="king-card">
+          <div class="king-container">
+            <div class="king-img-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Bayinnaung_statue.jpg/800px-Bayinnaung_statue.jpg"
+                class="king-img"
+                alt="King Bayinnaung"
+              />
+            </div>
+            <div class="king-text-container king-content">
+              <h5 class="card-title">King Bayinnaung</h5>
+              <p class="king-period mb-2">Reign: 1551–1581</p>
+              <p class="card-text">
+                Created the largest empire in Southeast Asian history through
+                military conquests.
+              </p>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Conquered
+                  much of SE Asia
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i
+                  >Established legal code
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Religious
+                  tolerance
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- King 4 -->
+        <div class="king-card">
+          <div class="king-container">
+            <div class="king-img-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Alaungpaya_statue.jpg/800px-Alaungpaya_statue.jpg"
+                class="king-img"
+                alt="King Alaungpaya"
+              />
+            </div>
+            <div class="king-text-container king-content">
+              <h5 class="card-title">King Alaungpaya</h5>
+              <p class="king-period mb-2">Reign: 1752–1760</p>
+              <p class="card-text">
+                Founder of the Konbaung Dynasty who reunified Burma and resisted
+                foreign invasions.
+              </p>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Last
+                  Burmese dynasty
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Repelled
+                  Chinese invasions
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Expanded
+                  territory
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- King 5 -->
+        <div class="king-card">
+          <div class="king-container">
+            <div class="king-img-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Hsinbyushin_statue.jpg/800px-Hsinbyushin_statue.jpg"
+                class="king-img"
+                alt="King Hsinbyushin"
+              />
+            </div>
+            <div class="king-text-container king-content">
+              <h5 class="card-title">King Hsinbyushin</h5>
+              <p class="king-period mb-2">Reign: 1763–1776</p>
+              <p class="card-text">
+                Known for military campaigns against Siam and China, plus
+                cultural achievements.
+              </p>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Sacked
+                  Ayutthaya
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Repelled
+                  Chinese invasions
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Arts
+                  patron
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- King 6 -->
+        <div class="king-card">
+          <div class="king-container">
+            <div class="king-img-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Mindon_Min.jpg/800px-Mindon_Min.jpg"
+                class="king-img"
+                alt="King Mindon"
+              />
+            </div>
+            <div class="king-text-container king-content">
+              <h5 class="card-title">King Mindon</h5>
+              <p class="king-period mb-2">Reign: 1853–1878</p>
+              <p class="card-text">
+                Modernizing monarch who adapted to British colonial pressures
+                while preserving independence.
+              </p>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Founded
+                  Mandalay
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>Fifth
+                  Buddhist Council
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i
+                  >Modernized administration
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
