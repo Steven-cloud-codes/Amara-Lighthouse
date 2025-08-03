@@ -25,21 +25,46 @@
 
     <!-- Custom CSS section -->
     <style>
-      body{
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        background-color: #5a3921;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-btn:hover {
+        background-color: #e6b17e;
+        transform: translateX(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .back-btn:active {
+        transform: translateX(-5px) scale(0.95);
+      }
+      body {
         background-color: #f1ebd4;
       }
       /* Sets the global font */
       .main-container {
         font-family: Arial, sans-serif;
       }
-     
+
       /* Makes all images responsive */
       img {
         max-width: 100%;
         height: auto;
       }
-      .banner{
-        
+      .banner {
         width: 1370px;
         height: 200px;
       }
@@ -55,24 +80,23 @@
         padding: 10px 20px;
         border-radius: 8px;
       }
-      .container-fluid{
+      .container-fluid {
         border-radius: 10px;
-        
-      } 
-      .headerImage{
-        background-image:url("assets/imgs/foods/myanmarfood.png");
+      }
+      .headerImage {
+        background-image: url("assets/imgs/foods/myanmarfood.png");
         filter: blur(3px);
       }
-      .monhingha{
-        background-color:#ebd1aa; 
-        border-radius: 10px
-      }
-      .laphet-thoke{
-        background-color: #b89d81; 
+      .monhingha {
+        background-color: #ebd1aa;
         border-radius: 10px;
       }
-      .shan-noodles{
-        background-color:#d8b87f ; 
+      .laphet-thoke {
+        background-color: #b89d81;
+        border-radius: 10px;
+      }
+      .shan-noodles {
+        background-color: #d8b87f;
         border-radius: 10px;
       }
     </style>
@@ -80,11 +104,14 @@
 
   <body>
     <div class="main-container">
+      <button onclick="history.back()" class="back-btn">← Back</button>
       <!-- ======================= BANNER ======================= -->
       <section class="banner">
         <!-- Main header banner -->
-        <div class="headerImage container-fluid text-center py-5 text-white border rounded">
-          <h1 class="fs-1 fw-bold mb-4 ">Discover Myanmar Rich Foods</h1>
+        <div
+          class="headerImage container-fluid text-center py-5 text-white border rounded"
+        >
+          <h1 class="fs-1 fw-bold mb-4">Discover Myanmar Rich Foods</h1>
           <h4>The art of Myanmar’s traditional cuisine</h4>
         </div>
       </section>
@@ -98,7 +125,7 @@
         <div
           data-aos="fade-up"
           class="container-fluid d-flex flex-column flex-md-row gap-3 p-4"
-          style="background-color:#cfa265"
+          style="background-color: #cfa265"
         >
           <!-- Text description -->
           <div class="flex-fill fs-5 d-flex align-items-center">
@@ -136,7 +163,7 @@
             <!-- Ingredient list with ordered list -->
             <div
               class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
-              style="background-color:#e4c18c"
+              style="background-color: #e4c18c"
             >
               <h3 class="fw-bold mb-3">Main Ingredients</h3>
               <ol class="fs-4">
@@ -160,7 +187,7 @@
           </div>
 
           <!-- Cultural significance note -->
-          <div class=" mt-3 text-center p-4">
+          <div class="mt-3 text-center p-4">
             <h4>
               In Myanmar, Mohinga represents community — it’s served during
               festivals, religious ceremonies, and street food stalls, reminding
@@ -178,9 +205,12 @@
         <!-- History -->
         <div
           class="container-fluid d-flex flex-column flex-md-row gap-3 p-4"
-          style="background-color: #644b35 "
+          style="background-color: #644b35"
         >
-          <div class="flex-fill fs-5 d-flex align-items-center" style="color: white;">
+          <div
+            class="flex-fill fs-5 d-flex align-items-center"
+            style="color: white"
+          >
             Laphet (fermented tea leaves) has been consumed since ancient
             Myanmar kingdoms, especially in Upper Myanmar. Tea leaf fermentation
             was both a preservation method and a way to celebrate victory and
@@ -202,20 +232,22 @@
         <!-- Ingredients -->
         <div class="ingredients container-fluid mt-3">
           <div class="d-flex flex-column flex-md-row gap-3 p-4">
-            <div class=" rounded d-flex justify-content-center">
+            <div class="rounded d-flex justify-content-center">
               <img
                 src="assets/imgs/foods/laphet2.png"
                 alt="Laphet Ingredients"
                 style="width: 300px"
-              /> 
+              />
             </div>
 
             <div
               class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
               style="background-color: #1f0a05"
             >
-              <h3 class="fw-bold mb-3" style="color: white;">Main Ingredients</h3>
-              <ol class="fs-4" style="color: white;">
+              <h3 class="fw-bold mb-3" style="color: white">
+                Main Ingredients
+              </h3>
+              <ol class="fs-4" style="color: white">
                 <li>Fermented tea leaves</li>
                 <li>Roasted peanuts, fried garlic</li>
                 <li>Toasted sesame seeds</li>
@@ -227,7 +259,7 @@
           </div>
 
           <!-- Cultural Note -->
-          <div class=" mt-3 text-center p-4">
+          <div class="mt-3 text-center p-4">
             <h4>
               Laphet Thoke is more than food — it’s a symbol of peace offerings,
               often used in ceremonies to settle disputes and celebrate
@@ -243,7 +275,7 @@
 
         <div
           class="container-fluid d-flex flex-column flex-md-row gap-3 p-4"
-          style="background-color:#dcb067 "
+          style="background-color: #dcb067"
         >
           <div class="flex-fill fs-5 d-flex align-items-center">
             Shan noodles originate from Shan State, where the Shan ethnic group
@@ -274,7 +306,7 @@
 
             <div
               class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
-              style="background-color:#c79b56 "
+              style="background-color: #c79b56"
             >
               <h3 class="fw-bold mb-3">Main Ingredients</h3>
               <ol class="fs-4">
@@ -288,7 +320,7 @@
             </div>
           </div>
 
-          <div class=" mt-3 text-center p-4">
+          <div class="mt-3 text-center p-4">
             <h4>
               Shan noodles are associated with hospitality in the hills and are
               beloved by both locals and travelers. They highlight the
