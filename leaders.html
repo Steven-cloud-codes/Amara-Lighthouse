@@ -9,6 +9,32 @@
       rel="stylesheet"
     />
     <style>
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        background-color: #5a3921;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-btn:hover {
+        background-color: #e6b17e;
+        transform: translateX(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .back-btn:active {
+        transform: translateX(-5px) scale(0.95);
+      }
       /* Custom styles for General Aung San section (unchanged) */
       .bio-container {
         padding: 2rem;
@@ -48,6 +74,7 @@
     </style>
   </head>
   <body>
+    <button onclick="history.back()" class="back-btn">← Back</button>
     <!-- General Aung San Banner (unchanged) -->
     <div class="container-fluid p-0">
       <img

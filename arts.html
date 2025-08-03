@@ -9,6 +9,32 @@
       rel="stylesheet"
     />
     <style>
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        background-color: #5a3921;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-btn:hover {
+        background-color: #e6b17e;
+        transform: translateX(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .back-btn:active {
+        transform: translateX(-5px) scale(0.95);
+      }
       /* ================ BASE STYLES ================ */
       section {
         margin-bottom: 4rem;
@@ -326,6 +352,8 @@
   </head>
   <body>
     <!-- Authors Section -->
+
+    <button onclick="history.back()" class="back-btn">← Back</button>
     <div class="container py-5" id="authors">
       <section id="authors">
         <h1 class="text-center mb-5">Famous Myanmar Authors</h1>
@@ -390,7 +418,9 @@
               <img
                 src="assets/imgs/famous-persons/kings and leaders/leaders/j2.png"
               />
-              <img src="assets/imgs/famous-persons/kings and leaders/leaders/j3.png" />
+              <img
+                src="assets/imgs/famous-persons/kings and leaders/leaders/j3.png"
+              />
             </div>
           </div>
         </div>
