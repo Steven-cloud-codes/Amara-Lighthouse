@@ -3,143 +3,775 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thanakha | Amara Lighthouse</title>
+    <title>Myanmar Culture | Amara Lighthouse</title>
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/culture_and_daily-life.css" />
-    <link rel="stylesheet" href="assets/css/animation.css" />
-    <link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.css" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-    <link
-      rel="icon"
-      type="image/png"
-      href="assets/imgs/front-page/logo-small.svg"
-    />
+    <style>
+      :root {
+        --primary-color: #5a3921;
+        --secondary-color: #e6b17e;
+        --light-color: #f8f1e9;
+        --dark-color: #2c1a0d;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--light-color);
+        color: var(--dark-color);
+        padding-top: 60px;
+      }
+
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-btn:hover {
+        background-color: var(--secondary-color);
+        transform: translateX(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .section-title {
+        color: var(--primary-color);
+        font-weight: 700;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--secondary-color);
+      }
+
+      .thanakha-banner {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("assets/imgs/culture_and_daily-life/Thanakha/Thanakha.jpg")
+            center/cover no-repeat;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        margin-bottom: 3rem;
+      }
+
+      .banner-text h1 {
+        color: white;
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        text-align: center;
+      }
+
+      .usage-card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 1.25rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%;
+      }
+
+      .usage-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .feature-icon {
+        font-size: 1.75rem;
+        color: var(--primary-color);
+        margin-bottom: 0.75rem;
+      }
+
+      .culture-card {
+        background-color: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        height: 100%;
+      }
+
+      .culture-card:hover {
+        transform: scale(1.02);
+      }
+
+      .full-image-carousel {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .full-image-carousel .carousel-item img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+      }
+
+      .clothing-badge {
+        background-color: var(--secondary-color);
+        color: var(--dark-color);
+        font-size: 0.75rem;
+      }
+
+      .carousel-indicators [data-bs-target] {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        opacity: 0.5;
+      }
+
+      .carousel-indicators .active {
+        opacity: 1;
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 5%;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-color: var(--primary-color);
+        border-radius: 50%;
+        padding: 10px;
+        background-size: 60%;
+      }
+
+      .card-body {
+        padding: 1.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .banner-text h1 {
+          font-size: 2rem;
+        }
+
+        .thanakha-banner {
+          height: 35vh;
+        }
+
+        .full-image-carousel .carousel-item img {
+          max-height: 300px;
+        }
+      }
+    </style>
   </head>
 
   <body>
     <button onclick="history.back()" class="back-btn">← Back</button>
 
-    <div class="thanakha-section">
+    <div class="container">
       <!-- =================== Main Banner =================== -->
-      <div class="thanakha-banner" data-aos="fade-up">
-        <div class="banner-image">
-          <img
-            src="assets/imgs/culture_and_daily-life/Thanakha/Thanakha.jpg"
-            alt="Thanakha Image"
-            width="500"
-            style="border-radius: 25px"
-          />
-        </div>
-
+      <section class="thanakha-banner" data-aos="fade-up">
         <div class="banner-text">
-          <h1 style="font-size: 100%">The Timeless Beauty Secret of Myanmar</h1>
+          <h1>The Timeless Beauty Secret of Myanmar</h1>
         </div>
-      </div>
+      </section>
 
       <!-- =================== What is Thanakha =================== -->
-      <div class="thanakha-introduction" data-aos="flip-right">
-        <h2 class="section-title">What is Thanakha?</h2>
-        <div class="section-text">
-          <p>
-            Thanakha is a traditional cosmetic paste made from the ground bark
-            of certain trees, mainly the Thanakha tree (Murraya or Limonia
-            acidissima), commonly found in Myanmar. It has been used by Myanmar
-            people for over 2,000 years as both a natural skincare product and a
-            cultural symbol.
-          </p>
-        </div>
-      </div>
-
-      <!-- =================== What is Thanakha Used For =================== -->
-      <div class="thanakha-usage" data-aos="zoom-in-up">
-        <h2 class="section-title">What is Thanakha Used For?</h2>
-        <div class="usage-cards">
-          <!-- ========== Card 1 ========== -->
-          <div class="usage-card">
-            <p class="emoji">🌞</p>
-            <h3>Cooling</h3>
-            <p>Provides a refreshing, cool feeling in Myanmar’s hot weather.</p>
-          </div>
-
-          <!-- ========== Card 2 ========== -->
-          <div class="usage-card">
-            <p class="emoji">🌟</p>
-            <h3>Skincare</h3>
-            <p>Protects the skin from sunburn, acne, and oiliness.</p>
-          </div>
-
-          <!-- ========== Card 3 ========== -->
-          <div class="usage-card">
-            <p class="emoji">🧼</p>
-            <h3>Natural Beauty</h3>
-            <p>Smoothens skin, acts as a natural foundation or makeup.</p>
-          </div>
-
-          <!-- ========== Card 4 ========== -->
-          <div class="usage-card">
-            <p class="emoji">🌼</p>
-            <h3>Cultural Identity</h3>
-            <p>
-              More than skincare—it's part of Myanmar’s tradition, seen in
-              festivals, daily life, and ceremonies.
+      <section class="py-5" data-aos="flip-right">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="section-title">What is Thanakha?</h2>
+            <p class="lead">
+              Thanakha is a traditional cosmetic paste made from the ground bark
+              of certain trees, mainly the Thanakha tree (Murraya or Limonia
+              acidissima), commonly found in Myanmar. It has been used by
+              Myanmar people for over 2,000 years as both a natural skincare
+              product and a cultural symbol.
             </p>
           </div>
         </div>
-      </div>
-      <div class="thanakha-types-title mt-3 text-center fs-5" style="">
-        <h2>Ways to use it</h2>
+      </section>
 
-        <div class="thanakha-types" data-aos="fade-right">
-          <div class="thanakha-type-card mt-3">
-            <div>
-              <img
-                class="thanakha-type-card-img"
-                alt="thanakha-type"
-                src="assets/imgs/culture_and_daily-life/Thanakha/thanakha-bark.webp"
-              />
+      <!-- =================== What is Thanakha Used For =================== -->
+      <section class="py-5" data-aos="zoom-in-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-12 text-center">
+            <h2 class="section-title">What is Thanakha Used For?</h2>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="usage-card text-center">
+              <div class="feature-icon">🌞</div>
+              <h3 class="h5">Cooling</h3>
+              <p class="mb-0">
+                Provides a refreshing, cool feeling in Myanmar's hot weather.
+              </p>
             </div>
-            <h5 style="margin: 15px">
-              A traditional form of Thanakha involves grinding the bark and
-              roots fo the Thanakha tree.
-            </h5>
           </div>
 
-          <div class="thanakha-type-card mt-3" data-aos="fade-up">
-            <div>
-              <img
-                class="thanakha-type-card-img"
-                alt="thanakha-type"
-                src="assets/imgs/culture_and_daily-life/Thanakha/thankha-powder.jpg"
-              />
+          <div class="col-md-6 col-lg-3">
+            <div class="usage-card text-center">
+              <div class="feature-icon">🌟</div>
+              <h3 class="h5">Skincare</h3>
+              <p class="mb-0">
+                Protects the skin from sunburn, acne, and oiliness.
+              </p>
             </div>
-            <h5 style="margin: 15px">
-              Thanakha powder is readily available for mixing with water to
-              create a paste.
-            </h5>
           </div>
 
-          <div class="thanakha-type-card mt-3" data-aos="fade-right">
-            <div>
-              <img
-                class="thanakha-type-card-img"
-                alt="thanakha-type"
-                src="assets/imgs/culture_and_daily-life/Thanakha/thanakha-paste.jpg"
-              />
+          <div class="col-md-6 col-lg-3">
+            <div class="usage-card text-center">
+              <div class="feature-icon">🧴</div>
+              <h3 class="h5">Natural Beauty</h3>
+              <p class="mb-0">
+                Smoothens skin, acts as a natural foundation or makeup.
+              </p>
             </div>
-            <h5 style="margin: 15px">
-              A paste made from the bark of the Thanakha tree ,and traditionally
-              used for skincare and cosmetics.
-            </h5>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="usage-card text-center">
+              <div class="feature-icon">🌿</div>
+              <h3 class="h5">Cultural Identity</h3>
+              <p class="mb-0">
+                More than skincare—it's part of Myanmar's tradition.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================== Ways to Use Thanakha =================== -->
+      <section class="py-5" data-aos="fade-up">
+        <div class="row justify-content-center mb-4">
+          <div class="col-12 text-center">
+            <h2 class="section-title">Ways to Use Thanakha</h2>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="culture-card" data-aos="fade-right">
+              <div class="full-image-carousel">
+                <img
+                  src="assets/imgs/culture_and_daily-life/Thanakha/thanakha-bark.webp"
+                  alt="Traditional thanakha preparation"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="card-body">
+                <h5 class="h6">Traditional Preparation</h5>
+                <p class="mb-0 small">
+                  Grinding the bark and roots of the Thanakha tree on a stone
+                  slab.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="culture-card" data-aos="fade-up">
+              <div class="full-image-carousel">
+                <img
+                  src="assets/imgs/culture_and_daily-life/Thanakha/thankha-powder.jpg"
+                  alt="Thanakha powder"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="card-body">
+                <h5 class="h6">Powder Form</h5>
+                <p class="mb-0 small">
+                  Pre-made Thanakha powder mixed with water to create a paste.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="culture-card" data-aos="fade-left">
+              <div class="full-image-carousel">
+                <img
+                  src="assets/imgs/culture_and_daily-life/Thanakha/thanakha-paste.jpg"
+                  alt="Thanakha paste application"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="card-body">
+                <h5 class="h6">Ready-to-Use Paste</h5>
+                <p class="mb-0 small">
+                  Prepared paste applied in decorative patterns on the face.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =================== Traditional Clothing =================== -->
+    <section class="py-5 bg-light" data-aos="fade-up">
+      <div class="container">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-8 text-center">
+            <h2 class="section-title">Traditional Clothing of Myanmar</h2>
+            <p class="lead text-muted">
+              The elegant attire reflecting Myanmar's rich cultural heritage
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Men's Clothing -->
+          <div class="col-md-6">
+            <div class="culture-card">
+              <div
+                id="mensClothingCarousel"
+                class="carousel slide full-image-carousel"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-indicators">
+                  <button
+                    type="button"
+                    data-bs-target="#mensClothingCarousel"
+                    data-bs-slide-to="0"
+                    class="active"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#mensClothingCarousel"
+                    data-bs-slide-to="1"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#mensClothingCarousel"
+                    data-bs-slide-to="2"
+                  ></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      src="https://i.pinimg.com/736x/64/44/1f/64441f6e3c6273637716042687f4ad18.jpg"
+                      class="d-block w-100"
+                      alt="Men's formal attire"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="https://i.pinimg.com/1200x/49/39/7f/49397f8b9e436d993cc68bc3fbd089e6.jpg"
+                      class="d-block w-100"
+                      alt="Men's casual wear"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="assets/imgs/culture_and_daily-life/ethnic-men.jpg"
+                      class="d-block w-100"
+                      alt="Ethnic men's clothing"
+                    />
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#mensClothingCarousel"
+                  data-bs-slide="prev"
+                >
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#mensClothingCarousel"
+                  data-bs-slide="next"
+                >
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+              <div class="card-body">
+                <h3 class="h5">Men's Attire</h3>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="badge clothing-badge">Longyi</span>
+                  <span class="badge clothing-badge">Taikpon</span>
+                  <span class="badge clothing-badge">Gaung Baung</span>
+                </div>
+                <p class="mb-0 small">
+                  Myanmar men traditionally wear the longyi (sarong) paired with
+                  a taikpon (shirt) and gaung baung (headwrap) for formal
+                  occasions. Daily wear is simpler with cotton longyis.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Women's Clothing -->
+          <div class="col-md-6">
+            <div class="culture-card">
+              <div
+                id="womensClothingCarousel"
+                class="carousel slide full-image-carousel"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-indicators">
+                  <button
+                    type="button"
+                    data-bs-target="#womensClothingCarousel"
+                    data-bs-slide-to="0"
+                    class="active"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#womensClothingCarousel"
+                    data-bs-slide-to="1"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#womensClothingCarousel"
+                    data-bs-slide-to="2"
+                  ></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      src="https://i.pinimg.com/736x/72/e0/7b/72e07bc72c880b9ced740bceaa00cdf0.jpg"
+                      class="d-block w-100"
+                      alt="Women's formal attire"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="https://i.pinimg.com/736x/aa/df/76/aadf76e95cef9815f8d9dbd32540a395.jpg"
+                      class="d-block w-100"
+                      alt="Women's casual wear"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="assets/imgs/culture_and_daily-life/ethnic-women.jpg"
+                      class="d-block w-100"
+                      alt="Ethnic women's clothing"
+                    />
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#womensClothingCarousel"
+                  data-bs-slide="prev"
+                >
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#womensClothingCarousel"
+                  data-bs-slide="next"
+                >
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+              <div class="card-body">
+                <h3 class="h5">Women's Attire</h3>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="badge clothing-badge">Htaingmathein</span>
+                  <span class="badge clothing-badge">Longyi</span>
+                  <span class="badge clothing-badge">Eingyi</span>
+                </div>
+                <p class="mb-0 small">
+                  Women wear elegant htaingmathein (blouses) with longyi
+                  (sarongs), often accessorized with shawls or eingyi (jackets).
+                  Fabrics feature intricate patterns and vibrant colors.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
+    <!-- =================== Tea Shop Culture =================== -->
+    <section class="py-5" data-aos="flip-left">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="section-title">Tea Shop Culture</h2>
+            <p class="lead">
+              Teashops are essential in daily life — for breakfast, chit-chat,
+              and social gatherings. People enjoy tea with mohinga or fried
+              snacks.
+            </p>
+            <div class="mt-4">
+              <img
+                src="https://i.pinimg.com/1200x/8f/35/c4/8f35c4bdb853598093de9f1cc8909593.jpg"
+                alt="Myanmar Teashop"
+                class="img-fluid rounded-3"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== Traditional Music =================== -->
+    <section class="py-5 bg-light" data-aos="zoom-in">
+      <div class="container">
+        <div class="row justify-content-center mb-4">
+          <div class="col-12 text-center">
+            <h2 class="section-title">Traditional Musical Instruments</h2>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="culture-card">
+              <div class="full-image-carousel">
+                <img
+                  src="https://i.pinimg.com/736x/bf/bb/73/bfbb73607cdd1e4dc72243d962d85fe3.jpg"
+                  alt="Saung Gauk harp"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="h5">Saung Gauk</h3>
+                <p class="mb-0 small">
+                  The national instrument of Myanmar, a 13-string harp with
+                  distinctive curved neck, traditionally used in royal courts
+                  and classical music performances.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="culture-card">
+              <div class="full-image-carousel">
+                <img
+                  src="https://i.pinimg.com/1200x/3b/45/37/3b4537874ec36ff165021b4cfcf67b8f.jpg"
+                  alt="Pattala xylophone"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="h5">Pattala</h3>
+                <p class="mb-0 small">
+                  A bamboo xylophone with 24 slats, played with two padded
+                  mallets. It produces a bright, resonant sound and is essential
+                  in traditional ensembles.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="culture-card">
+              <div class="full-image-carousel">
+                <img
+                  src="https://i.pinimg.com/736x/1d/e7/3d/1de73d1bfa8c1235e279ba91271f3199.jpg"
+                  alt="Hne oboe"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="h5">Hne</h3>
+                <p class="mb-0 small">
+                  A double-reed oboe-like instrument made of bamboo with a brass
+                  bell. Its piercing sound leads traditional orchestras and
+                  accompanies dramatic performances.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="culture-card">
+              <div class="full-image-carousel">
+                <img
+                  src="https://i.pinimg.com/1200x/ae/11/d2/ae11d24c0342312c1685a5892baba9b6.jpg"
+                  alt="Sai Waa circle of drums"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="h5">Sai Waa (Sine Waing)</h3>
+                <p class="mb-0 small">
+                  A circular frame of 21 tuned drums, played with great skill to
+                  produce melodic patterns. The centerpiece of traditional
+                  orchestras, creating rich rhythmic textures.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================== Traditional Dance =================== -->
+    <section class="py-5" data-aos="fade-right">
+      <div class="container">
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-8 text-center">
+            <h2 class="section-title">Traditional Dance & Performance Arts</h2>
+            <p class="lead">
+              Myanmar's rich performance traditions include classical dances,
+              folk dances, and puppetry.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="culture-card">
+              <div
+                id="classicalDanceCarousel"
+                class="carousel slide full-image-carousel"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-indicators">
+                  <button
+                    type="button"
+                    data-bs-target="#classicalDanceCarousel"
+                    data-bs-slide-to="0"
+                    class="active"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#classicalDanceCarousel"
+                    data-bs-slide-to="1"
+                  ></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      src="https://i.pinimg.com/736x/f9/f5/dc/f9f5dc88560284ae71623dc714f4edf5.jpg"
+                      class="d-block w-100"
+                      alt="Classical dance"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="https://i.pinimg.com/736x/5f/8e/c5/5f8ec5351750bec9b2e756dde5d4af2b.jpg"
+                      class="d-block w-100"
+                      alt="Zat pwe performance"
+                    />
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#classicalDanceCarousel"
+                  data-bs-slide="prev"
+                >
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#classicalDanceCarousel"
+                  data-bs-slide="next"
+                >
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+              <div class="card-body">
+                <h3 class="h5">Classical Dance</h3>
+                <p class="mb-0 small">
+                  Myanmar's classical dance features graceful, controlled
+                  movements with intricate hand gestures and elaborate costumes,
+                  often depicting Jataka tales and royal court scenes.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="culture-card">
+              <div
+                id="folkDanceCarousel"
+                class="carousel slide full-image-carousel"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-indicators">
+                  <button
+                    type="button"
+                    data-bs-target="#folkDanceCarousel"
+                    data-bs-slide-to="0"
+                    class="active"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#folkDanceCarousel"
+                    data-bs-slide-to="1"
+                  ></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      src="https://i.pinimg.com/736x/82/e9/f1/82e9f1018d208dd68e331de3bad92245.jpg"
+                      class="d-block w-100"
+                      alt="Elephant dance"
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="https://i.pinimg.com/736x/c5/eb/6b/c5eb6b3a86a3fd0204e8f84db34ac597.jpg"
+                      class="d-block w-100"
+                      alt="Folk dance"
+                    />
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#folkDanceCarousel"
+                  data-bs-slide="prev"
+                >
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#folkDanceCarousel"
+                  data-bs-slide="next"
+                >
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+              <div class="card-body">
+                <h3 class="h5">Folk & Festival Dances</h3>
+                <p class="mb-0 small">
+                  Includes regional dances like the Chin bamboo dance, Kachin
+                  manau circle dance, and the Elephant dance of Kyaukse
+                  performed during local festivals.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init();
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+      });
     </script>
   </body>
 </html>
