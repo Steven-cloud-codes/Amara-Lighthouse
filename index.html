@@ -8,6 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap-5.3.7-dist/css/bootstrap.min.css" />
 
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/frontpage.css" />
 
@@ -20,24 +26,17 @@
   </head>
 
   <body>
-    <script href="assets/js/frontpage.js"></script>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
-
     <!-- ========== Header Section ========== -->
     <header class="header">
       <!-- Top Row: Login & Contact Us -->
-      <div class="auth-buttons">
-        <a href="sign-up.html" class="btn login-btn">Login/Sign-up</a>
+      <div class="auth-buttons" id="authButtons">
+        <a href="log-in.html" class="btn login-btn">Login/Sign-up</a>
         <a href="#" class="btn contact-btn">Contact Us</a>
       </div>
 
       <!-- Middle Row: Logo + navigation -->
       <div class="d-flex align-items-center">
-        <a href="#" data-aos="fade-up">
+        <a href="index.html" data-aos="fade-up">
           <div class="logo-container">
             <img
               src="assets/imgs/front-page/logo.svg"
@@ -59,11 +58,6 @@
             </li>
             <li><a href="shopping.html" class="nav-link">Shop</a></li>
             <li><a href="about_us.html" class="nav-link">About Us</a></li>
-            <link
-              rel="icon"
-              href="assets/imgs/front-page/logo-small.svg"
-              type="image/svg+xml"
-            />
           </ul>
         </nav>
       </div>
@@ -81,9 +75,9 @@
           </div>
           <div class="hero-cta-buttons">
             <a href="explore.html" class="btn explore-btn">Start Exploring</a>
-            <a href="https://youtu.be/xMaaUTWzv8U" class="btn video-btn"
-              >Watch Intro Video</a
-            >
+            <a href="video.html?id=intro001" class="btn btn-primary">
+              <i class="bi bi-play-circle"></i> Watch Introduction
+            </a>
           </div>
         </div>
       </div>
@@ -142,7 +136,7 @@
             <div class="col-md-6 p-4">
               <h4 class="card-title">🏙️ Major Cities</h4>
               <p class="card-text">
-                Yangon, Mandalay, and Nay Pyi Taw are Myanmar’s major cities,
+                Yangon, Mandalay, and Nay Pyi Taw are Myanmar's major cities,
                 each with cultural and economic significance.
               </p>
             </div>
@@ -198,8 +192,52 @@
       </div>
     </section>
 
-    <!-- Script to toggle nav -->
+    <!-- Firebase & Bootstrap JS -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
+      // Initialize AOS animations
+      AOS.init();
+
+      // Firebase Configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB-ie758XKcPTkRrvupupiIu-6Th7hRn20",
+        authDomain: "amara-lighthouse-98405.firebaseapp.com",
+        projectId: "amara-lighthouse-98405",
+        storageBucket: "amara-lighthouse-98405.appspot.com",
+        messagingSenderId: "52542602697",
+        appId: "1:52542602697:web:931c73ddfc1547df92bc18",
+      };
+
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+
+      // Check auth state and update UI
+      auth.onAuthStateChanged((user) => {
+        const authButtons = document.getElementById("authButtons");
+
+        if (user) {
+          // User is logged in - show profile icon
+          authButtons.innerHTML = `
+            <a href="dashBoard.html" class="btn user-icon-btn">
+              <i class="bi bi-person-circle fs-4"></i>
+            </a>
+            <a href="#" class="btn contact-btn">Contact Us</a>
+          `;
+        } else {
+          // User is not logged in - show login/signup
+          authButtons.innerHTML = `
+            <a href="log-in.html" class="btn login-btn">Login/Sign-up</a>
+            <a href="#" class="btn contact-btn">Contact Us</a>
+          `;
+        }
+      });
+
+      // Hamburger menu toggle
       const hamburger = document.getElementById("hamburger");
       const nav = document.querySelector(".main-nav");
 

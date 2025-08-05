@@ -4,20 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amara Lighthouse - Shop</title>
+
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link href="assets/css/shopping.css" rel="stylesheet" />
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
+    <!-- Bootstrap Icons -->
     <link
-      rel="icon"
-      type="image/png"
-      href="assets/imgs/front-page/logo-small.svg"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
     />
+
+    <!-- Custom CSS -->
     <style>
+      :root {
+        --primary-color: #8b4513; /* Brown color */
+        --secondary-color: #f8f5f0; /* Light background */
+      }
+
+      body {
+        background-color: var(--secondary-color);
+      }
       .back-btn {
         position: fixed;
         top: 20px;
@@ -44,22 +53,678 @@
       .back-btn:active {
         transform: translateX(-5px) scale(0.95);
       }
+      .quantity-input {
+        width: 60px;
+        display: inline-block;
+        margin: 0 10px;
+        text-align: center;
+      }
+
+      .quantity-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        padding: 0;
+      }
+
+      .cart-icon {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .cart-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+      }
+
+      .cart-modal-img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+      }
+
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        background-color: #5a3921;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      .product-card {
+        transition: all 0.3s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
     </style>
   </head>
-  <body style="background-color: #f8f5f0">
+  <body>
     <button onclick="history.back()" class="back-btn">← Back</button>
+
+    <!-- Cart Icon -->
+    <div class="cart-icon text-white bg-brown rounded-circle p-2" id="cartIcon">
+      <i class="bi bi-cart-fill"></i>
+      <span class="cart-badge badge bg-danger rounded-pill" id="cartBadge"
+        >0</span
+      >
+    </div>
 
     <div class="container py-5">
       <h2 class="text-center mb-4">🛍️ Our Products 📦</h2>
-      <div class="row" id="shopContainer" data-aos="fade-up"></div>
+      <div class="row" id="shopContainer">
+        <!-- Products will be loaded here -->
+        <div class="col-12 text-center py-5">
+          <div class="spinner-border text-primary"></div>
+          <p class="mt-3">Loading products...</p>
+        </div>
+      </div>
     </div>
 
-    <script src="assets/js/shopping.js"></script>
-    <script href="assets/js/frontpage.js"></script>
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-brown text-white">
+            <h5 class="modal-title">Your Shopping Cart</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="cartItems">
+                  <!-- Cart items will be loaded here -->
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="3" class="text-end fw-bold">Grand Total:</td>
+                    <td class="fw-bold" id="cartTotal">0 ks</td>
+                    <td></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Continue Shopping
+            </button>
+            <button type="button" class="btn btn-primary" id="orderBtn">
+              Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Order Confirmation Modal -->
+    <div class="modal fade" id="orderConfirmationModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title">Order Confirmation</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body" id="orderConfirmationContent">
+            <!-- Order details will be loaded here -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-success"
+              data-bs-dismiss="modal"
+            >
+              Continue Shopping
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Checkout</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="shippingForm">
+              <div class="mb-3">
+                <label for="shippingName" class="form-label">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="shippingName"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="shippingAddress" class="form-label">Address</label>
+                <textarea
+                  class="form-control"
+                  id="shippingAddress"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="shippingPhone" class="form-label"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="shippingPhone"
+                  required
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary" id="confirmOrderBtn">
+              Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Firebase & Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
     <script>
-      AOS.init();
+      // Firebase Configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB-ie758XKcPTkRrvupupiIu-6Th7hRn20",
+        authDomain: "amara-lighthouse-98405.firebaseapp.com",
+        projectId: "amara-lighthouse-98405",
+        storageBucket: "amara-lighthouse-98405.appspot.com",
+        messagingSenderId: "52542602697",
+        appId: "1:52542602697:web:931c73ddfc1547df92bc18",
+      };
+
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+      // Product data
+      const shopItems = [
+        {
+          id: "1",
+          name: "Traditional Longyi",
+          description:
+            "Worn for generations in Myanmar, symbolizing elegance and comfort.",
+          image: "assets/imgs/shopping/longyi.jpg",
+          price: 25000,
+          currency: "ks",
+        },
+        {
+          id: "2",
+          name: "Burmese Puppet",
+          description:
+            "Handcrafted puppet used in traditional theatre performances.",
+          image: "assets/imgs/shopping/puppet.jpg",
+          price: 50000,
+          currency: "ks",
+        },
+        {
+          id: "3",
+          name: "Lacquerware Box",
+          description:
+            "Beautifully carved container made with ancient techniques in Bagan.",
+          image: "assets/imgs/shopping/lacquer-box.jpg",
+          price: 30000,
+          currency: "ks",
+        },
+        {
+          id: "3",
+          name: "Lacquerware Box",
+          description:
+            "Beautifully carved container made with ancient techniques in Bagan.",
+          image: "assets/imgs/shopping/lacquer-box.jpg",
+          price: 30000,
+          currency: "ks",
+        },
+      ];
+
+      // Cart functionality
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartModal = new bootstrap.Modal(
+        document.getElementById("cartModal")
+      );
+      const orderConfirmationModal = new bootstrap.Modal(
+        document.getElementById("orderConfirmationModal")
+      );
+      const checkoutModal = new bootstrap.Modal(
+        document.getElementById("checkoutModal")
+      );
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", function () {
+        loadProducts();
+        updateCartBadge();
+        setupEventListeners();
+      });
+
+      // Load products
+      function loadProducts() {
+        const shopContainer = document.getElementById("shopContainer");
+        shopContainer.innerHTML = "";
+
+        shopItems.forEach((product) => {
+          const col = document.createElement("div");
+          col.className = "col-md-4 mb-4";
+          col.innerHTML = `
+            <div class="card h-100 product-card">
+              <img src="${product.image}" class="card-img-top" alt="${
+            product.name
+          }" style="height: 220px; object-fit: cover;">
+              <div class="card-body d-flex flex-column">
+                <div>
+                  <h5 class="card-title">${product.name}</h5>
+                  <p class="card-text">${product.description}</p>
+                  <h3 class="card-price">${product.price.toLocaleString()} ${
+            product.currency
+          }</h3>
+                </div>
+                <div class="mt-auto pt-3">
+                  <div class="d-flex justify-content-center align-items-center mb-3">
+                    <button class="btn btn-outline-secondary quantity-btn minus">-</button>
+                    <input type="number" class="form-control quantity-input" value="1" min="1">
+                    <button class="btn btn-outline-secondary quantity-btn plus">+</button>
+                  </div>
+                  <button class="btn w-100 add-to-cart" data-id="${
+                    product.id
+                  }" style="background-color:#643b47; color: white;">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          shopContainer.appendChild(col);
+        });
+      }
+
+      // Setup event listeners
+      function setupEventListeners() {
+        // Cart icon click
+        document.getElementById("cartIcon").addEventListener("click", () => {
+          updateCartDisplay();
+          cartModal.show();
+        });
+
+        // Order button click
+        document.getElementById("orderBtn").addEventListener("click", () => {
+          checkoutModal.show();
+        });
+
+        // Confirm order button
+        document
+          .getElementById("confirmOrderBtn")
+          .addEventListener("click", placeOrder);
+
+        // Product quantity buttons
+        document.addEventListener("click", function (e) {
+          if (e.target.classList.contains("plus")) {
+            const input = e.target.previousElementSibling;
+            input.value = parseInt(input.value) + 1;
+          } else if (e.target.classList.contains("minus")) {
+            const input = e.target.nextElementSibling;
+            if (parseInt(input.value) > 1) {
+              input.value = parseInt(input.value) - 1;
+            }
+          } else if (e.target.classList.contains("add-to-cart")) {
+            const productId = e.target.getAttribute("data-id");
+            const product = shopItems.find((p) => p.id === productId);
+            const quantity = parseInt(
+              e.target.closest(".card-body").querySelector(".quantity-input")
+                .value
+            );
+            addToCart(product, quantity);
+          }
+        });
+      }
+
+      // Cart functions
+      function addToCart(product, quantity) {
+        const existingItem = cart.find((item) => item.id === product.id);
+
+        if (existingItem) {
+          existingItem.quantity += quantity;
+        } else {
+          cart.push({
+            id: product.id,
+            name: product.name,
+            imageUrl: product.image,
+            price: product.price,
+            currency: product.currency,
+            quantity: quantity,
+          });
+        }
+
+        saveCartToLocal();
+        updateCartBadge();
+        showToast(`${quantity} × ${product.name} added to cart`);
+      }
+
+      function updateCartDisplay() {
+        const cartItems = document.getElementById("cartItems");
+        cartItems.innerHTML = "";
+
+        if (cart.length === 0) {
+          cartItems.innerHTML = `
+            <tr>
+              <td colspan="5" class="text-center py-4">
+                Your cart is empty
+              </td>
+            </tr>
+          `;
+          document.getElementById("cartTotal").textContent = "0 ks";
+          return;
+        }
+
+        let grandTotal = 0;
+
+        cart.forEach((item) => {
+          const total = item.price * item.quantity;
+          grandTotal += total;
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>
+              <div class="d-flex align-items-center">
+                <img src="${item.imageUrl}" class="cart-modal-img me-3" alt="${
+            item.name
+          }">
+                <span>${item.name}</span>
+              </div>
+            </td>
+            <td>${item.price.toLocaleString()} ${item.currency}</td>
+            <td>
+              <div class="d-flex align-items-center">
+                <button class="btn btn-sm btn-outline-secondary cart-minus" data-id="${
+                  item.id
+                }">-</button>
+                <span class="mx-2">${item.quantity}</span>
+                <button class="btn btn-sm btn-outline-secondary cart-plus" data-id="${
+                  item.id
+                }">+</button>
+              </div>
+            </td>
+            <td>${total.toLocaleString()} ${item.currency}</td>
+            <td>
+              <button class="btn btn-sm btn-danger cart-remove" data-id="${
+                item.id
+              }">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          `;
+          cartItems.appendChild(row);
+
+          // Add event listeners to cart item buttons
+          row.querySelector(".cart-plus").addEventListener("click", () => {
+            const item = cart.find((i) => i.id === item.id);
+            item.quantity++;
+            updateCartDisplay();
+            saveCartToLocal();
+            updateCartBadge();
+          });
+
+          row.querySelector(".cart-minus").addEventListener("click", () => {
+            const item = cart.find((i) => i.id === item.id);
+            if (item.quantity > 1) {
+              item.quantity--;
+              updateCartDisplay();
+              saveCartToLocal();
+              updateCartBadge();
+            }
+          });
+
+          row.querySelector(".cart-remove").addEventListener("click", () => {
+            cart = cart.filter((i) => i.id !== item.id);
+            updateCartDisplay();
+            saveCartToLocal();
+            updateCartBadge();
+          });
+        });
+
+        document.getElementById(
+          "cartTotal"
+        ).textContent = `${grandTotal.toLocaleString()} ${
+          cart[0]?.currency || "ks"
+        }`;
+      }
+
+      function saveCartToLocal() {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+
+      function updateCartBadge() {
+        const totalItems = cart.reduce(
+          (total, item) => total + item.quantity,
+          0
+        );
+        document.getElementById("cartBadge").textContent = totalItems;
+      }
+
+      function showToast(message) {
+        const toast = document.createElement("div");
+        toast.className = "position-fixed bottom-0 end-0 p-3";
+        toast.innerHTML = `
+          <div class="toast show" role="alert">
+            <div class="toast-header">
+              <strong class="me-auto">Added to Cart</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+              ${message}
+            </div>
+          </div>
+        `;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+      }
+
+      // Order functions
+      // Order functions
+      async function placeOrder() {
+        const user = auth.currentUser;
+        const btn = document.getElementById("confirmOrderBtn");
+
+        // Validate form fields
+        const shippingName = document
+          .getElementById("shippingName")
+          .value.trim();
+        const shippingAddress = document
+          .getElementById("shippingAddress")
+          .value.trim();
+        const shippingPhone = document
+          .getElementById("shippingPhone")
+          .value.trim();
+
+        // Clear previous errors
+        document
+          .querySelectorAll(".error-message")
+          .forEach((el) => (el.textContent = ""));
+
+        // Validate inputs
+        let isValid = true;
+        if (!shippingName) {
+          document.getElementById("nameError").textContent =
+            "Please enter your name";
+          isValid = false;
+        }
+        if (!shippingAddress) {
+          document.getElementById("addressError").textContent =
+            "Please enter your address";
+          isValid = false;
+        }
+        if (!shippingPhone) {
+          document.getElementById("phoneError").textContent =
+            "Please enter your phone number";
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        if (!user) {
+          alert("Please login to place an order");
+          window.location.href = "log-in.html";
+          return;
+        }
+
+        if (cart.length === 0) {
+          alert("Your cart is empty!");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.innerHTML =
+          '<span class="spinner-border spinner-border-sm"></span> Processing...';
+
+        try {
+          // Prepare order data with all required fields
+          const order = {
+            userId: user.uid,
+            userEmail: user.email || "",
+            items: cart.map((item) => ({
+              productId: item.id,
+              name: item.name,
+              price: item.price,
+              quantity: item.quantity,
+              imageUrl: item.imageUrl || "",
+              currency: item.currency || "ks",
+            })),
+            total: cart.reduce(
+              (sum, item) => sum + item.price * item.quantity,
+              0
+            ),
+            currency: cart[0]?.currency || "ks",
+            status: "pending",
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            shippingInfo: {
+              name: shippingName,
+              address: shippingAddress,
+              phone: shippingPhone,
+            },
+            paymentMethod: "Cash on Delivery",
+          };
+
+          // Validate all order fields
+          if (!order.userId || !order.items || order.items.length === 0) {
+            throw new Error("Invalid order data");
+          }
+
+          // Save to Firestore
+          const docRef = await db.collection("orders").add(order);
+
+          // Clear cart after successful order
+          cart = [];
+          saveCartToLocal();
+          updateCartBadge();
+
+          // Show confirmation
+          showOrderConfirmation(docRef.id, order);
+
+          // Close modals
+          checkoutModal.hide();
+          cartModal.hide();
+
+          // Reset form
+          document.getElementById("shippingForm").reset();
+        } catch (error) {
+          console.error("Order error details:", error);
+          alert(
+            `There was an error placing your order: ${error.message}\n\nPlease check your information and try again.`
+          );
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Place Order";
+        }
+      }
+
+      function showOrderConfirmation(orderId, order) {
+        document.getElementById("orderConfirmationContent").innerHTML = `
+          <h5>Thank you for your order!</h5>
+          <p>Your order #${orderId} has been received.</p>
+          <hr>
+          <h6>Order Summary:</h6>
+          <ul class="list-group mb-3">
+            ${order.items
+              .map(
+                (item) => `
+              <li class="list-group-item d-flex justify-content-between">
+                <span>${item.name} × ${item.quantity}</span>
+                <span>${(item.price * item.quantity).toLocaleString()} ${
+                  item.currency
+                }</span>
+              </li>
+            `
+              )
+              .join("")}
+          </ul>
+          <div class="d-flex justify-content-between fw-bold">
+            <span>Total:</span>
+            <span>${order.total.toLocaleString()} ${order.currency}</span>
+          </div>
+          <hr>
+          <p>We'll contact you shortly to confirm your order.</p>
+        `;
+
+        orderConfirmationModal.show();
+      }
     </script>
   </body>
 </html>
