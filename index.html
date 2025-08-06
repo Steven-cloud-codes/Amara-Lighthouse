@@ -26,11 +26,15 @@
   </head>
   <style>
     /* Mobile-first approach for border radius */
-    .location, .capital, .cities, .landscape, .climate {
+    .location,
+    .capital,
+    .cities,
+    .landscape,
+    .climate {
       border-radius: 10px;
       overflow: hidden; /* Ensures child images respect the border radius */
     }
-    
+
     /* Desktop-specific styles */
     @media (min-width: 768px) {
       .location {
@@ -48,7 +52,7 @@
       .climate {
         border-radius: 100px 0 100px 0;
       }
-      
+
       /* Fix image border radius to match parent card */
       .location img {
         border-radius: 0 0 100px 0;
@@ -66,14 +70,14 @@
         border-radius: 0 0 100px 0;
       }
     }
-    
+
     /* Ensure images fill their containers */
     .card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    
+
     /* Fix flex issues on mobile */
     @media (max-width: 767.98px) {
       .card .row {
@@ -86,20 +90,6 @@
   </style>
 
   <body>
-<<<<<<< HEAD
-    <script href="assets/js/frontpage.js"></script>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        duration: 800,
-        once: true
-      });
-      
-    </script>
-
-=======
->>>>>>> 073e36ef3b20cc6125218660cbdf8f19be8515f1
     <!-- ========== Header Section ========== -->
     <header class="header">
       <!-- Top Row: Login & Contact Us -->
@@ -165,7 +155,11 @@
         </h2>
 
         <!-- Location Card -->
-        <div class="location card mb-4 shadow-lg border-0" data-aos="zoom-in" style="background-color:#debd90">
+        <div
+          class="location card mb-4 shadow-lg border-0"
+          data-aos="zoom-in"
+          style="background-color: #debd90"
+        >
           <div class="row g-0 align-items-center">
             <div class="col-md-6 p-4">
               <h4 class="card-title">📍 Location</h4>
@@ -177,8 +171,7 @@
             <div class="col-md-6">
               <img
                 src="assets/imgs/front-page/location.png"
-                class="img-fluid "
-            
+                class="img-fluid"
                 alt="Myanmar Location"
               />
             </div>
@@ -186,7 +179,11 @@
         </div>
 
         <!-- Capital Card -->
-        <div class="capital card mb-4 shadow-lg border-0" data-aos="zoom-in" style="background-color:lch(78.96% 6.43 234.79)">
+        <div
+          class="capital card mb-4 shadow-lg border-0"
+          data-aos="zoom-in"
+          style="background-color: lch(78.96% 6.43 234.79)"
+        >
           <div class="row g-0 align-items-center flex-md-row-reverse">
             <div class="col-md-6 p-4">
               <h4 class="card-title">🏛️ Capital</h4>
@@ -199,7 +196,6 @@
               <img
                 src="assets/imgs/front-page/nay-pyi-taw.jpg"
                 class="img-fluid"
-                
                 alt="Nay Pyi Taw"
               />
             </div>
@@ -207,7 +203,7 @@
         </div>
 
         <!-- Major Cities Card -->
-        <div class="cities card mb-4 shadow-lg border-0" data-aos="zoom-in" >
+        <div class="cities card mb-4 shadow-lg border-0" data-aos="zoom-in">
           <div class="row g-0 align-items-center">
             <div class="col-md-6 p-4">
               <h4 class="card-title">🏙️ Major Cities</h4>
@@ -216,11 +212,10 @@
                 each with cultural and economic significance.
               </p>
             </div>
-            <div class="col-md-6" >
+            <div class="col-md-6">
               <img
                 src="assets/imgs/front-page/myanmar-map-cities.jpg"
                 class="img-fluid"
-               
                 alt="Yangon Cityscape"
               />
             </div>
@@ -228,7 +223,11 @@
         </div>
 
         <!-- Landscape Card -->
-        <div class="landscape card mb-4 shadow-lg border-0" data-aos="zoom-in" style="background-color:#e9cfb7">
+        <div
+          class="landscape card mb-4 shadow-lg border-0"
+          data-aos="zoom-in"
+          style="background-color: #e9cfb7"
+        >
           <div class="row g-0 align-items-center flex-md-row-reverse">
             <div class="col-md-6 p-4">
               <h4 class="card-title">🌄 Landscape</h4>
@@ -241,7 +240,6 @@
               <img
                 src="assets/imgs/front-page/mandaly-landscape.jpg"
                 class="img-fluid"
-                
                 alt="Myanmar Landscape"
               />
             </div>
@@ -249,7 +247,11 @@
         </div>
 
         <!-- Climate Card -->
-        <div class="climate card mb-4 shadow-lg border-0" data-aos="zoom-in" style="background-color:oklab(88.64699999999999% -0.02467 -0.02888)">
+        <div
+          class="climate card mb-4 shadow-lg border-0"
+          data-aos="zoom-in"
+          style="background-color: oklab(88.64699999999999% -0.02467 -0.02888)"
+        >
           <div class="row g-0 align-items-center">
             <div class="col-md-6 p-4">
               <h4 class="card-title">☀️ Climate</h4>
@@ -261,8 +263,7 @@
             <div class="col-md-6">
               <img
                 src="assets/imgs/front-page/myanmar-climate.jpg"
-                class="img-fluid "
-                
+                class="img-fluid"
                 alt="Myanmar Climate"
               />
             </div>
@@ -323,7 +324,6 @@
       hamburger.addEventListener("click", () => {
         nav.classList.toggle("show");
       });
-      
     </script>
   </body>
 </html>
