@@ -86,19 +86,7 @@
         width: 60px;
         height: 60px;
         object-fit: cover;
-      }
-
-      .back-btn {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        z-index: 1000;
-        background-color: #5a3921;
-        color: white;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 20px;
-        cursor: pointer;
+        border-radius: 4px;
       }
 
       .product-card {
@@ -108,6 +96,14 @@
       .product-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      #cartItems td {
+        vertical-align: middle;
+      }
+
+      #cartItems .cart-remove {
+        padding: 0.25rem 0.5rem;
       }
     </style>
   </head>
@@ -154,7 +150,7 @@
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
-                    <th>Action</th>
+                    <th>Remove</th>
                   </tr>
                 </thead>
                 <tbody id="cartItems">
@@ -326,15 +322,6 @@
           price: 30000,
           currency: "ks",
         },
-        {
-          id: "3",
-          name: "Lacquerware Box",
-          description:
-            "Beautifully carved container made with ancient techniques in Bagan.",
-          image: "assets/imgs/shopping/lacquer-box.jpg",
-          price: 30000,
-          currency: "ks",
-        },
       ];
 
       // Cart functionality
@@ -491,19 +478,9 @@
               </div>
             </td>
             <td>${item.price.toLocaleString()} ${item.currency}</td>
-            <td>
-              <div class="d-flex align-items-center">
-                <button class="btn btn-sm btn-outline-secondary cart-minus" data-id="${
-                  item.id
-                }">-</button>
-                <span class="mx-2">${item.quantity}</span>
-                <button class="btn btn-sm btn-outline-secondary cart-plus" data-id="${
-                  item.id
-                }">+</button>
-              </div>
-            </td>
+            <td class="text-center">${item.quantity}</td>
             <td>${total.toLocaleString()} ${item.currency}</td>
-            <td>
+            <td class="text-center">
               <button class="btn btn-sm btn-danger cart-remove" data-id="${
                 item.id
               }">
@@ -512,25 +489,6 @@
             </td>
           `;
           cartItems.appendChild(row);
-
-          // Add event listeners to cart item buttons
-          row.querySelector(".cart-plus").addEventListener("click", () => {
-            const item = cart.find((i) => i.id === item.id);
-            item.quantity++;
-            updateCartDisplay();
-            saveCartToLocal();
-            updateCartBadge();
-          });
-
-          row.querySelector(".cart-minus").addEventListener("click", () => {
-            const item = cart.find((i) => i.id === item.id);
-            if (item.quantity > 1) {
-              item.quantity--;
-              updateCartDisplay();
-              saveCartToLocal();
-              updateCartBadge();
-            }
-          });
 
           row.querySelector(".cart-remove").addEventListener("click", () => {
             cart = cart.filter((i) => i.id !== item.id);
@@ -577,7 +535,6 @@
         setTimeout(() => toast.remove(), 3000);
       }
 
-      // Order functions
       // Order functions
       async function placeOrder() {
         const user = auth.currentUser;
@@ -661,11 +618,6 @@
             },
             paymentMethod: "Cash on Delivery",
           };
-
-          // Validate all order fields
-          if (!order.userId || !order.items || order.items.length === 0) {
-            throw new Error("Invalid order data");
-          }
 
           // Save to Firestore
           const docRef = await db.collection("orders").add(order);
