@@ -5,5 +5,12 @@ const videoList = [
     description: "An overview of Myanmar's early civilization.",
     file: "https://drive.google.com/file/d/1fjZKI5jRMfxZHsqr3kUeMD4xPJu8RoDw/preview",
     source: "https://www.youtube.com/watch?v=example123" // (if you also want to give credit)
+  },
+   {
+    id: "intro002",
+    title: "Shan Noodle",
+    description: "One of Myanmar Traditional Foods",
+    file: "https://drive.google.com/file/d/1bhJ1LinDFGXICNoUx4UOHX5KU-xSNhn1/preview",
+    source: "https://www.youtube.com/watch?v=example123" // (if you also want to give credit)
   }
 ];
