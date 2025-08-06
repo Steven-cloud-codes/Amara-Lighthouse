@@ -51,23 +51,51 @@
       .back-btn:active {
         transform: translateX(-5px) scale(0.95);
       }
+      
       body {
         background-color: #f1ebd4;
-      }
-      /* Sets the global font */
-      .main-container {
         font-family: Arial, sans-serif;
+        padding-bottom: 20px;
       }
 
       /* Makes all images responsive */
       img {
         max-width: 100%;
         height: auto;
+        object-fit: cover;
       }
-      .banner {
-        width: 1370px;
-        height: 200px;
+      
+      /* Header banner styles */
+      .headerImage {
+        background-image: url("assets/imgs/foods/myanmarfood.png");
+        background-size: cover;
+        background-position: center;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        position: relative;
       }
+      
+      .headerImage::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      
+      .headerImage h1,
+      .headerImage h4 {
+        position: relative;
+        z-index: 1;
+      }
+      
       /* Adjusts padding for the ingredient list */
       .ingredients ol {
         padding-left: 1.5rem;
@@ -75,29 +103,96 @@
 
       /* Custom button style for "Watch Video" */
       .btn-custom {
-        background-color: oklch(55.988% 0.05604 75.049);
-        font-size: 1.2rem;
+        background-color: #b8860b;
+        color: white;
+        font-size: 1.1rem;
         padding: 10px 20px;
         border-radius: 8px;
+        transition: all 0.3s;
       }
+      
+      .btn-custom:hover {
+        background-color: #daa520;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      
       .container-fluid {
         border-radius: 10px;
       }
-      .headerImage {
-        background-image: url("assets/imgs/foods/myanmarfood.png");
-        filter: blur(3px);
-      }
+      
+      /* Food section styles */
       .monhingha {
         background-color: #ebd1aa;
         border-radius: 10px;
       }
+      
       .laphet-thoke {
         background-color: #b89d81;
         border-radius: 10px;
       }
+      
       .shan-noodles {
         background-color: #d8b87f;
         border-radius: 10px;
+      }
+      
+      /* Food image container */
+      .food-img-container {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .headerImage {
+          min-height: 150px;
+          padding: 20px;
+        }
+        
+        .headerImage h1 {
+          font-size: 1.8rem;
+        }
+        
+        .headerImage h4 {
+          font-size: 1.1rem;
+        }
+        
+        .btn-custom {
+          font-size: 1rem;
+          padding: 8px 16px;
+        }
+        
+        .ingredients ol {
+          font-size: 1rem !important;
+        }
+        
+        section {
+          padding: 10px !important;
+        }
+        
+        h3.fw-bold {
+          font-size: 1.5rem !important;
+        }
+      }
+      
+      @media (max-width: 576px) {
+        .headerImage h1 {
+          font-size: 1.5rem;
+        }
+        
+        .headerImage h4 {
+          font-size: 1rem;
+        }
+        
+        .food-img-container {
+          margin-bottom: 20px;
+        }
+        
+        .d-flex.flex-md-row {
+          flex-direction: column !important;
+        }
       }
     </style>
   </head>
@@ -105,228 +200,251 @@
   <body>
     <div class="main-container">
       <button onclick="history.back()" class="back-btn">← Back</button>
+      
       <!-- ======================= BANNER ======================= -->
-      <section class="banner">
+      <section class="banner mb-4">
         <!-- Main header banner -->
-        <div
-          class="headerImage container-fluid text-center py-5 text-white border rounded"
-        >
-          <h1 class="fs-1 fw-bold mb-4">Discover Myanmar Rich Foods</h1>
-          <h4>The art of Myanmar’s traditional cuisine</h4>
+        <div class="headerImage container-fluid text-center py-5 text-white border rounded">
+          <h1 class="fs-1 fw-bold mb-3">Discover Myanmar Rich Foods</h1>
+          <h4 class="fs-4">The art of Myanmar's traditional cuisine</h4>
         </div>
       </section>
 
       <!-- ======================= MOHINGA SECTION ======================= -->
-      <section class="monhingha container-lg mt-3 border">
+      <section class="monhingha container-lg mt-4 border p-0 overflow-hidden">
         <!-- Section heading -->
         <h3 class="fw-bold fs-1 p-3">Mohinga (မုန့်ဟင်းခါး)</h3>
 
         <!-- History and culture description + image -->
         <div
-          data-aos="fade-up"
+          data-aos="zoom-in-up"
           class="container-fluid d-flex flex-column flex-md-row gap-3 p-4"
           style="background-color: #cfa265"
         >
           <!-- Text description -->
           <div class="flex-fill fs-5 d-flex align-items-center">
-            <!-- You can customize the font-size or text color here -->
-            Mohinga is considered Myanmar’s national dish, traditionally eaten
+            Mohinga is considered Myanmar's national dish, traditionally eaten
             for breakfast but loved all day long. Historical records trace its
-            roots back to ancient times when fish was abundant along Myanmar’s
+            roots back to ancient times when fish was abundant along Myanmar's
             riverbanks. It was a staple in the royal court and common villages
             alike — symbolizing unity and simplicity.
           </div>
 
           <!-- Main food image -->
-          <div class="flex-shrink-0 rounded d-flex justify-content-center">
+          <div class="food-img-container">
             <img
               src="assets/imgs/foods/mohinga1.png"
               alt="Mohinga Image"
-              style="width: 300px"
-              class="border rounded"
+              class="border rounded img-fluid"
             />
           </div>
         </div>
 
         <!-- Ingredients section -->
-        <div class="ingredients container-fluid mt-3">
-          <div class="d-flex flex-column flex-md-row gap-3 p-4">
-            <!-- Side image of ingredients -->
-            <div class="rounded d-flex justify-content-center">
-              <img
-                src="assets/imgs/foods/mohinga2.png"
-                alt="Ingredients"
-                style="width: 300px"
-              />
-            </div>
+        <div data-aos="zoom-in">
+          <div class="ingredients container-fluid mt-3 p-0">
+            <div class="d-flex flex-column flex-md-row gap-3 p-4">
+              <!-- Side image of ingredients -->
+              <div class="food-img-container">
+                <img
+                  src="assets/imgs/foods/mohinga2.png"
+                  alt="Mohinga Ingredients"
+                  class="img-fluid"
+                />
+              </div>
 
-            <!-- Ingredient list with ordered list -->
-            <div
-              class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
-              style="background-color: #e4c18c"
-            >
-              <h3 class="fw-bold mb-3">Main Ingredients</h3>
-              <ol class="fs-4">
-                <li>Rice noodles</li>
-                <li>Catfish (or any freshwater fish)</li>
-                <li>Lemongrass, banana stem, ginger, and garlic</li>
-                <li>Toasted rice powder (for thickening)</li>
-                <li>Boiled eggs</li>
-                <li>Crispy fritters and onions for toppings</li>
-              </ol>
-
-              <!-- Responsive Watch Video Button -->
-              <button
-                onclick="window.open('https://youtu.be/l1KgsWd_GOE', '_blank')"
-                type="button"
-                class="btn btn-custom w-100 w-md-50 mt-3"
+              <!-- Ingredient list with ordered list -->
+              <div
+                class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
+                style="background-color: #e4c18c"
               >
-                Watch Video
-              </button>
-            </div>
-          </div>
+                <h3 class="fw-bold mb-3">Main Ingredients</h3>
+                <ol class="fs-4">
+                  <li>Rice noodles</li>
+                  <li>Catfish (or any freshwater fish)</li>
+                  <li>Lemongrass, banana stem, ginger, and garlic</li>
+                  <li>Toasted rice powder (for thickening)</li>
+                  <li>Boiled eggs</li>
+                  <li>Crispy fritters and onions for toppings</li>
+                </ol>
 
-          <!-- Cultural significance note -->
-          <div class="mt-3 text-center p-4">
-            <h4>
-              In Myanmar, Mohinga represents community — it’s served during
-              festivals, religious ceremonies, and street food stalls, reminding
-              people of their shared traditions.
-            </h4>
+                <!-- Responsive Watch Video Button -->
+                <button
+                  onclick="window.open('https://youtu.be/l1KgsWd_GOE', '_blank')"
+                  type="button"
+                  class="btn btn-custom w-100 w-md-50 mt-3"
+                >
+                  Watch Video
+                </button>
+              </div>
+            </div>
+          
+
+            <!-- Cultural significance note -->
+            <div class="mt-3 text-center p-4">
+              <h4>
+                In Myanmar, Mohinga represents community — it's served during
+                festivals, religious ceremonies, and street food stalls, reminding
+                people of their shared traditions.
+              </h4>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Repeat the same layout structure for the other foods -->
       <!-- ======================= LAPHET THOKE SECTION ======================= -->
-      <section class="laphet-thoke container-lg mt-5">
+      <section class="laphet-thoke container-lg mt-4 border p-0 overflow-hidden">
         <h3 class="fw-bold fs-1 p-3">Laphet Thoke (လက်ဖက်သုတ်)</h3>
 
         <!-- History -->
-        <div
-          class="container-fluid d-flex flex-column flex-md-row gap-3 p-4"
-          style="background-color: #644b35"
-        >
+        <div data-aos="fade-up-right">
           <div
-            class="flex-fill fs-5 d-flex align-items-center"
-            style="color: white"
+            class="container-fluid d-flex flex-column flex-md-row gap-3 p-4"
+            style="background-color: #644b35"
           >
-            Laphet (fermented tea leaves) has been consumed since ancient
-            Myanmar kingdoms, especially in Upper Myanmar. Tea leaf fermentation
-            was both a preservation method and a way to celebrate victory and
-            social bonding. Offering Laphet was a symbol of friendship and
-            respect.
-          </div>
+            <div
+              class="flex-fill fs-5 d-flex align-items-center"
+              style="color: white"
+            >
+              Laphet (fermented tea leaves) has been consumed since ancient
+              Myanmar kingdoms, especially in Upper Myanmar. Tea leaf fermentation
+              was both a preservation method and a way to celebrate victory and
+              social bonding. Offering Laphet was a symbol of friendship and
+              respect.
+            </div>
 
-          <!-- Main food image -->
-          <div class="flex-shrink-0 rounded d-flex justify-content-center">
-            <img
-              src="assets/imgs/foods/laphat1.png"
-              alt="Laphet Thoke Image"
-              style="width: 300px"
-              class="rounded"
-            />
+            <!-- Main food image -->
+            <div class="food-img-container">
+              <img
+                src="assets/imgs/foods/laphat1.png"
+                alt="Laphet Thoke Image"
+                class="rounded img-fluid"
+              />
+            </div>
           </div>
         </div>
 
         <!-- Ingredients -->
-        <div class="ingredients container-fluid mt-3">
-          <div class="d-flex flex-column flex-md-row gap-3 p-4">
-            <div class="rounded d-flex justify-content-center">
-              <img
-                src="assets/imgs/foods/laphet2.png"
-                alt="Laphet Ingredients"
-                style="width: 300px"
-              />
+        <div data-aos="fade-up-left">
+          <div class="ingredients container-fluid mt-3 p-0">
+            <div class="d-flex flex-column flex-md-row gap-3 p-4">
+              <div class="food-img-container">
+                <img
+                  src="assets/imgs/foods/laphet2.png"
+                  alt="Laphet Thoke Ingredients"
+                  class="img-fluid"
+                />
+              </div>
+
+              <div
+                class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
+                style="background-color: #1f0a05"
+              >
+                <h3 class="fw-bold mb-3" style="color: white">
+                  Main Ingredients
+                </h3>
+                <ol class="fs-4" style="color: white">
+                  <li>Fermented tea leaves</li>
+                  <li>Roasted peanuts, fried garlic</li>
+                  <li>Toasted sesame seeds</li>
+                  <li>Dried shrimp</li>
+                  <li>Tomatoes, cabbage</li>
+                  <li>Lime juice and chili</li>
+                </ol>
+                
+                <!-- Watch Video Button -->
+                <button
+                  onclick="window.open('https://youtu.be/example-laphet', '_blank')"
+                  type="button"
+                  class="btn btn-custom w-100 w-md-50 mt-3"
+                >
+                  Watch Video
+                </button>
+              </div>
             </div>
 
-            <div
-              class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
-              style="background-color: #1f0a05"
-            >
-              <h3 class="fw-bold mb-3" style="color: white">
-                Main Ingredients
-              </h3>
-              <ol class="fs-4" style="color: white">
-                <li>Fermented tea leaves</li>
-                <li>Roasted peanuts, fried garlic</li>
-                <li>Toasted sesame seeds</li>
-                <li>Dried shrimp</li>
-                <li>Tomatoes, cabbage</li>
-                <li>Lime juice and chili</li>
-              </ol>
+            <!-- Cultural Note -->
+            <div class="mt-3 text-center p-4" style="color: white">
+              <h4>
+                Laphet Thoke is more than food — it's a symbol of peace offerings,
+                often used in ceremonies to settle disputes and celebrate
+                agreements in the Konbaung dynasty.
+              </h4>
             </div>
-          </div>
-
-          <!-- Cultural Note -->
-          <div class="mt-3 text-center p-4">
-            <h4>
-              Laphet Thoke is more than food — it’s a symbol of peace offerings,
-              often used in ceremonies to settle disputes and celebrate
-              agreements in the Konbaung dynasty.
-            </h4>
           </div>
         </div>
       </section>
 
       <!-- ======================= SHAN NOODLES SECTION ======================= -->
-      <section class="shan-noodles container-lg mt-5">
-        <h3 class="fw-bold fs-1 p-3">Shan Noodles (ရှမ်းခေါက်ဆွဲ)</h3>
+      <section class="shan-noodles container-lg mt-4 border p-0 overflow-hidden">
+        <div data-aos="zoom-in-left">
+          <h3 class="fw-bold fs-1 p-3">Shan Noodles (ရှမ်းခေါက်ဆွဲ)</h3>
 
-        <div
-          class="container-fluid d-flex flex-column flex-md-row gap-3 p-4"
-          style="background-color: #dcb067"
-        >
-          <div class="flex-fill fs-5 d-flex align-items-center">
-            Shan noodles originate from Shan State, where the Shan ethnic group
-            resides. The Shan kingdom had trade connections with China and
-            Thailand, influencing the noodle’s mild, clean, and savory flavor.
-            It’s a classic example of ethnic diversity in Myanmar food culture.
-          </div>
+          <div
+            class="container-fluid d-flex flex-column flex-md-row gap-3 p-4"
+            style="background-color: #dcb067"
+          >
+            <div class="flex-fill fs-5 d-flex align-items-center">
+              Shan noodles originate from Shan State, where the Shan ethnic group
+              resides. The Shan kingdom had trade connections with China and
+              Thailand, influencing the noodle's mild, clean, and savory flavor.
+              It's a classic example of ethnic diversity in Myanmar food culture.
+            </div>
 
-          <div class="flex-shrink-0 rounded d-flex justify-content-center">
-            <img
-              src="assets/imgs/foods/shun-noodle1.png"
-              alt="Shan Noodles Image"
-              style="width: 300px"
-              class="rounded"
-            />
-          </div>
-        </div>
-
-        <div class="ingredients container-fluid mt-3">
-          <div class="d-flex flex-column flex-md-row gap-3 p-4">
-            <div class="rounded d-flex justify-content-center">
+            <div class="food-img-container">
               <img
-                src="assets/imgs/foods/shun-noodle2.png"
-                alt="Shan Noodles Ingredients"
-                style="width: 300px"
+                src="assets/imgs/foods/shun-noodle1.png"
+                alt="Shan Noodles Image"
+                class="rounded img-fluid"
               />
             </div>
-
-            <div
-              class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
-              style="background-color: #c79b56"
-            >
-              <h3 class="fw-bold mb-3">Main Ingredients</h3>
-              <ol class="fs-4">
-                <li>Rice noodles (flat or round)</li>
-                <li>Marinated chicken or pork (with light soy sauce)</li>
-                <li>Fried garlic oil</li>
-                <li>Pickled mustard greens</li>
-                <li>Tomato-based sauce</li>
-                <li>Fresh spring onions</li>
-              </ol>
-            </div>
           </div>
+        </div>
+        
+        <div data-aos="zoom-in-right">
+          <div class="ingredients container-fluid mt-3 p-0">
+            <div class="d-flex flex-column flex-md-row gap-3 p-4">
+              <div class="food-img-container">
+                <img
+                  src="assets/imgs/foods/shun-noodle2.png"
+                  alt="Shan Noodles Ingredients"
+                  class="img-fluid"
+                />
+              </div>
 
-          <div class="mt-3 text-center p-4">
-            <h4>
-              Shan noodles are associated with hospitality in the hills and are
-              beloved by both locals and travelers. They highlight the
-              simplicity and warmth of Shan culture, often served in Shan tea
-              shops and homes.
-            </h4>
+              <div
+                class="flex-fill d-flex flex-column justify-content-center align-items-center p-3"
+                style="background-color: #c79b56"
+              >
+                <h3 class="fw-bold mb-3">Main Ingredients</h3>
+                <ol class="fs-4">
+                  <li>Rice noodles (flat or round)</li>
+                  <li>Marinated chicken or pork (with light soy sauce)</li>
+                  <li>Fried garlic oil</li>
+                  <li>Pickled mustard greens</li>
+                  <li>Tomato-based sauce</li>
+                  <li>Fresh spring onions</li>
+                </ol>
+                
+                <!-- Watch Video Button -->
+                <button
+                  onclick="window.open('https://youtu.be/example-shan-noodles', '_blank')"
+                  type="button"
+                  class="btn btn-custom w-100 w-md-50 mt-3"
+                >
+                  Watch Video
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-3 text-center p-4">
+              <h4>
+                Shan noodles are associated with hospitality in the hills and are
+                beloved by both locals and travelers. They highlight the
+                simplicity and warmth of Shan culture, often served in Shan tea
+                shops and homes.
+              </h4>
+            </div>
           </div>
         </div>
       </section>
@@ -334,7 +452,10 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      AOS.init();
+      AOS.init({
+        duration: 800,
+        once: true
+      });
     </script>
   </body>
 </html>
