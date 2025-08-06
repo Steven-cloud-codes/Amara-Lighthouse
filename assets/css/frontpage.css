@@ -51,7 +51,9 @@
     max-width: 100%;
     height: auto;
 }
-
+.icon-large {
+    font-size: 100px;
+}
 /* Hamburger */
 .hamburger {
     display: none;
@@ -153,7 +155,7 @@
 /* ========== Responsive ========== */
 @media (max-width: 768px) {
     .auth-buttons {
-        justify-content: center;
+      
         flex-wrap: wrap;
         margin-bottom: 10px;
     }

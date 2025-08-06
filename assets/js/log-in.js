@@ -1,7 +1,6 @@
 // =====================================
 // FIREBASE CONFIGURATION & INITIALIZATION
 // =====================================
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyB-ie758XKcPTkRrvupupiIu-6Th7hRn20",
   authDomain: "amara-lighthouse-98405.firebaseapp.com",
@@ -21,11 +20,11 @@ const db = firebase.firestore();
 // DOM ELEMENTS
 // =====================================
 const loginForm = document.getElementById('loginForm');
-const loginBtn = document.querySelector('#loginForm button[type="submit"]');
+const loginBtn = document.getElementById('loginButton');
 const forgotPasswordLink = document.getElementById('forgotPasswordLink');
 
 // =====================================
-// LOGIN FUNCTIONALITY (Single Handler)
+// LOGIN FUNCTIONALITY
 // =====================================
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -48,12 +47,18 @@ loginForm.addEventListener('submit', async (e) => {
       return;
     }
     
-    // 3. Update last login timestamp
-    await db.collection('users').doc(userCredential.user.uid).update({
-      lastLogin: firebase.firestore.FieldValue.serverTimestamp()
-    });
+    // 3. Update last login timestamp (optional)
+    try {
+      await db.collection('users').doc(userCredential.user.uid).update({
+        lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    } catch (error) {
+      console.error("Error updating last login:", error);
+      // Continue even if update fails
+    }
     
     // 4. Redirect to dashboard
+    console.log("Login successful, redirecting to dashboard...");
     window.location.href = "dashBoard.html";
     
   } catch (error) {
@@ -118,5 +123,13 @@ document.getElementById('sendResetLinkBtn').addEventListener('click', async () =
     messageDiv.className = "text-danger";
   } finally {
     sendBtn.disabled = false;
+  }
+});
+
+// Check if user is already logged in
+auth.onAuthStateChanged((user) => {
+  if (user && user.emailVerified) {
+    console.log("User already logged in, redirecting to dashboard...");
+    window.location.href = "dashBoard.html";
   }
 });
