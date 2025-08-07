@@ -211,29 +211,40 @@
             email,
             password
           );
+          const user = userCredential.user;
 
-          // 2. Email verification check
-          if (!userCredential.user.emailVerified) {
-            await auth.signOut();
-            alert(
-              "Please verify your email first. Check your inbox (including spam folder)!"
-            );
+          // 2. Define admin emails (must match what you created in Firebase)
+          const ADMIN_EMAILS = [
+            "admin@amaralighthouse.com", // This matches your Firebase user
+            "superadmin@amaralighthouse.com", // Optional secondary admin
+          ];
+
+          // 3. Check if admin (skip verification)
+          if (ADMIN_EMAILS.includes(user.email)) {
+            window.location.href = "admin.html";
             return;
           }
 
-          // 3. Update last login timestamp
+          // 4. For regular users - require verification
+          if (!user.emailVerified) {
+            await auth.signOut();
+            alert("Please verify your email first. Check your inbox!");
+            return;
+          }
+
+          // 5. Update last login timestamp
           try {
-            await db.collection("users").doc(userCredential.user.uid).update({
+            await db.collection("users").doc(user.uid).update({
               lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
             });
           } catch (error) {
             console.error("Error updating last login:", error);
           }
 
-          // 4. Redirect to dashboard
+          // 6. Redirect regular users
           window.location.href = "dashBoard.html";
         } catch (error) {
-          // Handle errors
+          // Error handling
           let message = "Login failed. Please try again.";
           switch (error.code) {
             case "auth/user-not-found":

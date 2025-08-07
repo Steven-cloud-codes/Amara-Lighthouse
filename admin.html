@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Amara Lighthouse</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
+    <style>
+      :root {
+        --primary-brown: #8b4513;
+        --light-bg: #f8f5f0;
+      }
+      .admin-nav {
+        background-color: var(--primary-brown);
+      }
+      .admin-card {
+        transition: all 0.3s;
+      }
+      .admin-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      .order-table {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      }
+      .table thead {
+        background-color: var(--primary-brown);
+        color: white;
+      }
+      .loading-spinner {
+        display: none;
+      }
+
+      /* Add to your existing styles */
+      #orderDetailsModal .list-group-item {
+        padding: 0.75rem 1.25rem;
+      }
+
+      #orderDetailsModal .list-group-item strong {
+        display: inline-block;
+        width: 100px;
+      }
+
+      #orderDetailsModal .modal-body {
+        max-height: 70vh;
+        overflow-y: auto;
+      }
+
+      .status-select {
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Admin Navigation -->
+    <nav class="navbar navbar-expand-lg admin-nav navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Amara Lighthouse Admin</a>
+        <button class="btn btn-outline-light ms-auto" id="logoutBtn">
+          <i class="bi bi-box-arrow-right"></i> Logout
+        </button>
+      </div>
+    </nav>
+
+    <div class="container py-4">
+      <h3 class="mb-4">
+        <i class="bi bi-speedometer2"></i> Dashboard Overview
+      </h3>
+
+      <!-- Admin content here -->
+      <div class="alert alert-success">
+        You're logged in as an administrator with full privileges.
+      </div>
+
+      <!-- Orders Section -->
+      <div class="card admin-card mb-4">
+        <div class="card-header bg-brown text-white">
+          <h4 class="mb-0"><i class="bi bi-list-check"></i> Customer Orders</h4>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between mb-3">
+            <div class="input-group" style="max-width: 300px">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search orders..."
+                id="searchOrders"
+              />
+              <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <div
+              class="spinner-border text-primary loading-spinner"
+              role="status"
+              id="loadingSpinner"
+            >
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+
+          <div class="table-responsive order-table">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody">
+                <!-- Orders will be inserted here by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div class="modal fade" id="orderDetailsModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-brown text-white">
+            <h5 class="modal-title">
+              Order Details - #<span id="orderIdHeader"></span>
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h6>Customer Information</h6>
+                <ul class="list-group mb-3">
+                  <li class="list-group-item">
+                    <strong>Name:</strong> <span id="customerName"></span>
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Email:</strong> <span id="customerEmail"></span>
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Phone:</strong> <span id="customerPhone"></span>
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Address:</strong> <span id="customerAddress"></span>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h6>Order Summary</h6>
+                <ul class="list-group mb-3">
+                  <li class="list-group-item">
+                    <strong>Date:</strong> <span id="orderDate"></span>
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Status:</strong> <span id="orderStatus"></span>
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Payment Method:</strong>
+                    <span id="paymentMethod"></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <h6 class="mt-4">Order Items</h6>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody id="orderItemsList">
+                  <!-- Order items will be inserted here -->
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="3" class="text-end fw-bold">Grand Total:</td>
+                    <td class="fw-bold" id="orderGrandTotal"></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="updateStatusBtn">
+              Update Status
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Firebase & Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script>
+      // Firebase Configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB-ie758XKcPTkRrvupupiIu-6Th7hRn20",
+        authDomain: "amara-lighthouse-98405.firebaseapp.com",
+        projectId: "amara-lighthouse-98405",
+        storageBucket: "amara-lighthouse-98405.appspot.com",
+        messagingSenderId: "52542602697",
+        appId: "1:52542602697:web:931c73ddfc1547df92bc18",
+      };
+
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+      // Check admin status on page load
+      auth.onAuthStateChanged((user) => {
+        const ADMIN_EMAILS = [
+          "admin@amaralighthouse.com",
+          "superadmin@amaralighthouse.com",
+        ];
+
+        if (!user || !ADMIN_EMAILS.includes(user.email)) {
+          window.location.href = "log-in.html";
+        } else {
+          // If admin, load orders
+          loadOrders();
+        }
+      });
+
+      // Logout functionality
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        auth.signOut().then(() => {
+          window.location.href = "log-in.html";
+        });
+      });
+
+      // Load orders from Firestore
+
+      // ... (keep all the existing Firebase config and initialization code)
+
+      // Updated loadOrders function
+      function loadOrders() {
+        const loadingSpinner = document.getElementById("loadingSpinner");
+        const ordersTableBody = document.getElementById("ordersTableBody");
+
+        loadingSpinner.style.display = "inline-block";
+        ordersTableBody.innerHTML =
+          '<tr><td colspan="7" class="text-center">Loading orders...</td></tr>';
+
+        db.collection("orders")
+          .orderBy("createdAt", "desc") // Changed from 'timestamp' to 'createdAt'
+          .get()
+          .then((querySnapshot) => {
+            ordersTableBody.innerHTML = "";
+
+            if (querySnapshot.empty) {
+              ordersTableBody.innerHTML =
+                '<tr><td colspan="7" class="text-center">No orders found</td></tr>';
+              return;
+            }
+
+            querySnapshot.forEach((doc) => {
+              const order = doc.data();
+
+              // Handle date properly
+              const orderDate = order.createdAt
+                ? new Date(order.createdAt.seconds * 1000).toLocaleString()
+                : "N/A";
+
+              // Get customer name from shippingInfo
+              const customerName = order.shippingInfo?.name || "N/A";
+
+              // Calculate total items
+              const itemCount =
+                order.items?.reduce(
+                  (total, item) => total + item.quantity,
+                  0
+                ) || 0;
+
+              // Get total amount
+              const totalAmount = order.total || 0;
+
+              // Create table row
+              const row = document.createElement("tr");
+              row.innerHTML = `
+                  <td>${doc.id.substring(0, 8)}...</td>
+                  <td>${customerName}</td>
+                  <td>${orderDate}</td>
+                  <td>${itemCount}</td>
+                  <td>$${totalAmount.toFixed(2)}</td>
+                  <td>
+                    <span class="badge ${getStatusBadgeClass(order.status)}">
+                      ${order.status || "Pending"}
+                    </span>
+                  </td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-primary view-order" data-id="${
+                      doc.id
+                    }">
+                      <i class="bi bi-eye"></i> View
+                    </button>
+                  </td>
+                `;
+
+              ordersTableBody.appendChild(row);
+            });
+
+            // Add event listeners to view buttons
+            document.querySelectorAll(".view-order").forEach((button) => {
+              button.addEventListener("click", (e) => {
+                const orderId =
+                  e.target.getAttribute("data-id") ||
+                  e.target.closest(".view-order").getAttribute("data-id");
+                viewOrderDetails(orderId);
+              });
+            });
+          })
+          .catch((error) => {
+            console.error("Error getting orders: ", error);
+            ordersTableBody.innerHTML =
+              '<tr><td colspan="7" class="text-center text-danger">Error loading orders</td></tr>';
+          })
+          .finally(() => {
+            loadingSpinner.style.display = "none";
+          });
+      }
+
+      // ... (rest of the code remains the same)
+
+      // Helper function to get Bootstrap badge class based on status
+      function getStatusBadgeClass(status) {
+        switch (status?.toLowerCase()) {
+          case "completed":
+            return "bg-success";
+          case "shipped":
+            return "bg-primary";
+          case "cancelled":
+            return "bg-danger";
+          case "processing":
+            return "bg-warning text-dark";
+          default:
+            return "bg-secondary";
+        }
+      }
+
+      // Function to view order details (you can expand this with a modal)
+      // Function to view order details in modal
+      function viewOrderDetails(orderId) {
+        const modal = new bootstrap.Modal(
+          document.getElementById("orderDetailsModal")
+        );
+
+        // Show loading state
+        document.getElementById("orderItemsList").innerHTML =
+          '<tr><td colspan="4" class="text-center">Loading order details...</td></tr>';
+
+        db.collection("orders")
+          .doc(orderId)
+          .get()
+          .then((doc) => {
+            if (!doc.exists) {
+              throw new Error("Order not found");
+            }
+
+            const order = doc.data();
+
+            // Set basic order info
+            document.getElementById("orderIdHeader").textContent =
+              orderId.substring(0, 8);
+            document.getElementById("customerName").textContent =
+              order.shippingInfo?.name || "N/A";
+            document.getElementById("customerEmail").textContent =
+              order.userEmail || "N/A";
+            document.getElementById("customerPhone").textContent =
+              order.shippingInfo?.phone || "N/A";
+            document.getElementById("customerAddress").textContent =
+              order.shippingInfo?.address || "N/A";
+
+            // Format date
+            const orderDate = order.createdAt
+              ? new Date(order.createdAt.seconds * 1000).toLocaleString()
+              : "N/A";
+            document.getElementById("orderDate").textContent = orderDate;
+
+            // Status with badge
+            const status = order.status || "Pending";
+            document.getElementById(
+              "orderStatus"
+            ).innerHTML = `<span class="badge ${getStatusBadgeClass(
+              status
+            )}">${status}</span>`;
+
+            document.getElementById("paymentMethod").textContent =
+              order.paymentMethod || "Cash on Delivery";
+
+            // Render order items
+            const itemsList = document.getElementById("orderItemsList");
+            itemsList.innerHTML = "";
+
+            if (order.items && order.items.length > 0) {
+              order.items.forEach((item) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                  <td>${item.name}</td>
+                  <td>$${item.price?.toFixed(2) || "0.00"}</td>
+                  <td>${item.quantity || 1}</td>
+                  <td>$${
+                    (item.price * item.quantity)?.toFixed(2) || "0.00"
+                  }</td>
+                `;
+                itemsList.appendChild(row);
+              });
+            } else {
+              itemsList.innerHTML =
+                '<tr><td colspan="4" class="text-center">No items found</td></tr>';
+            }
+
+            // Set grand total
+            document.getElementById("orderGrandTotal").textContent = `$${
+              order.total?.toFixed(2) || "0.00"
+            }`;
+
+            // Show the modal
+            modal.show();
+
+            // Set up status update button
+            document.getElementById("updateStatusBtn").onclick = () => {
+              updateOrderStatus(orderId);
+            };
+          })
+          .catch((error) => {
+            console.error("Error loading order details:", error);
+            document.getElementById(
+              "orderItemsList"
+            ).innerHTML = `<tr><td colspan="4" class="text-center text-danger">Error: ${error.message}</td></tr>`;
+            modal.show();
+          });
+      }
+
+      // Function to update order status (you can expand this)
+      function updateOrderStatus(orderId) {
+        const newStatus = prompt(
+          "Enter new status (Pending, Processing, Shipped, Completed, Cancelled):"
+        );
+
+        if (newStatus) {
+          db.collection("orders")
+            .doc(orderId)
+            .update({
+              status: newStatus,
+            })
+            .then(() => {
+              alert("Order status updated successfully!");
+              loadOrders(); // Refresh the orders list
+              bootstrap.Modal.getInstance(
+                document.getElementById("orderDetailsModal")
+              ).hide();
+            })
+            .catch((error) => {
+              console.error("Error updating status:", error);
+              alert("Failed to update status: " + error.message);
+            });
+        }
+      }
+    </script>
+  </body>
+</html>
