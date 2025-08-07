@@ -6,6 +6,7 @@ const videoList = [
     file: "https://drive.google.com/file/d/1fjZKI5jRMfxZHsqr3kUeMD4xPJu8RoDw/preview",
     source: "https://www.youtube.com/watch?v=example123" // (if you also want to give credit)
   },
+<<<<<<< HEAD
   {
     id: "intro002",
     title: "Mohinga",
@@ -26,5 +27,13 @@ const videoList = [
     description: "Soft rice noodles with chicken or pork in a light tomato sauce.",
     file: "https://drive.google.com/file/d/1IwHdN2ghPDFOz1Vr7WChLriOkPvWJ_65/preview",
     source: "https://youtu.be/otblLjczF44?si=E7YBYtmMI6Tjr8fm" // (if you also want to give credit)
+=======
+   {
+    id: "intro002",
+    title: "Shan Noodle",
+    description: "One of Myanmar Traditional Foods",
+    file: "https://drive.google.com/file/d/1bhJ1LinDFGXICNoUx4UOHX5KU-xSNhn1/preview",
+    source: "https://www.youtube.com/watch?v=example123" // (if you also want to give credit)
+>>>>>>> 0ae48e09f4eb336709006f283dabb181e50d2180
   }
 ];

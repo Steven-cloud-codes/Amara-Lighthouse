@@ -51,7 +51,7 @@
       .back-btn:active {
         transform: translateX(-5px) scale(0.95);
       }
-      
+
       body {
         background-color: #f1ebd4;
         font-family: Arial, sans-serif;
@@ -64,7 +64,7 @@
         height: auto;
         object-fit: cover;
       }
-      
+
       /* Header banner styles */
       .headerImage {
         background-image: url("assets/imgs/foods/myanmarfood.png");
@@ -79,7 +79,7 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         position: relative;
       }
-      
+
       .headerImage::before {
         content: "";
         position: absolute;
@@ -89,13 +89,13 @@
         bottom: 0;
         background-color: rgba(0, 0, 0, 0.4);
       }
-      
+
       .headerImage h1,
       .headerImage h4 {
         position: relative;
         z-index: 1;
       }
-      
+
       /* Adjusts padding for the ingredient list */
       .ingredients ol {
         padding-left: 1.5rem;
@@ -110,86 +110,86 @@
         border-radius: 8px;
         transition: all 0.3s;
       }
-      
+
       .btn-custom:hover {
         background-color: #daa520;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
-      
+
       .container-fluid {
         border-radius: 10px;
       }
-      
+
       /* Food section styles */
       .monhingha {
         background-color: #ebd1aa;
         border-radius: 10px;
       }
-      
+
       .laphet-thoke {
         background-color: #b89d81;
         border-radius: 10px;
       }
-      
+
       .shan-noodles {
         background-color: #d8b87f;
         border-radius: 10px;
       }
-      
+
       /* Food image container */
       .food-img-container {
         width: 100%;
         max-width: 300px;
         margin: 0 auto;
       }
-      
+
       /* Responsive adjustments */
       @media (max-width: 768px) {
         .headerImage {
           min-height: 150px;
           padding: 20px;
         }
-        
+
         .headerImage h1 {
           font-size: 1.8rem;
         }
-        
+
         .headerImage h4 {
           font-size: 1.1rem;
         }
-        
+
         .btn-custom {
           font-size: 1rem;
           padding: 8px 16px;
         }
-        
+
         .ingredients ol {
           font-size: 1rem !important;
         }
-        
+
         section {
           padding: 10px !important;
         }
-        
+
         h3.fw-bold {
           font-size: 1.5rem !important;
         }
       }
-      
+
       @media (max-width: 576px) {
         .headerImage h1 {
           font-size: 1.5rem;
         }
-        
+
         .headerImage h4 {
           font-size: 1rem;
         }
-        
+
         .food-img-container {
           margin-bottom: 20px;
         }
-        
+
         .d-flex.flex-md-row {
           flex-direction: column !important;
         }
@@ -200,11 +200,13 @@
   <body>
     <div class="main-container">
       <button onclick="history.back()" class="back-btn">← Back</button>
-      
+
       <!-- ======================= BANNER ======================= -->
       <section class="banner mb-4">
         <!-- Main header banner -->
-        <div class="headerImage container-fluid text-center py-5 text-white border rounded">
+        <div
+          class="headerImage container-fluid text-center py-5 text-white border rounded"
+        >
           <h1 class="fs-1 fw-bold mb-3">Discover Myanmar Rich Foods</h1>
           <h4 class="fs-4">The art of Myanmar's traditional cuisine</h4>
         </div>
@@ -274,14 +276,13 @@
                 </a>
               </div>
             </div>
-          
 
             <!-- Cultural significance note -->
             <div class="mt-3 text-center p-4">
               <h4>
                 In Myanmar, Mohinga represents community — it's served during
-                festivals, religious ceremonies, and street food stalls, reminding
-                people of their shared traditions.
+                festivals, religious ceremonies, and street food stalls,
+                reminding people of their shared traditions.
               </h4>
             </div>
           </div>
@@ -289,7 +290,9 @@
       </section>
 
       <!-- ======================= LAPHET THOKE SECTION ======================= -->
-      <section class="laphet-thoke container-lg mt-4 border p-0 overflow-hidden">
+      <section
+        class="laphet-thoke container-lg mt-4 border p-0 overflow-hidden"
+      >
         <h3 class="fw-bold fs-1 p-3">Laphet Thoke (လက်ဖက်သုတ်)</h3>
 
         <!-- History -->
@@ -303,10 +306,10 @@
               style="color: white"
             >
               Laphet (fermented tea leaves) has been consumed since ancient
-              Myanmar kingdoms, especially in Upper Myanmar. Tea leaf fermentation
-              was both a preservation method and a way to celebrate victory and
-              social bonding. Offering Laphet was a symbol of friendship and
-              respect.
+              Myanmar kingdoms, especially in Upper Myanmar. Tea leaf
+              fermentation was both a preservation method and a way to celebrate
+              victory and social bonding. Offering Laphet was a symbol of
+              friendship and respect.
             </div>
 
             <!-- Main food image -->
@@ -347,7 +350,7 @@
                   <li>Tomatoes, cabbage</li>
                   <li>Lime juice and chili</li>
                 </ol>
-                
+
                 <!-- Watch Video Button -->
                 <a href="video.html?id=intro003" class="btn" style="background-color:#b8860b; color:black;">
                   <i class="bi bi-play-circle"></i> Watch Video
@@ -358,9 +361,9 @@
             <!-- Cultural Note -->
             <div class="mt-3 text-center p-4" style="color: white">
               <h4>
-                Laphet Thoke is more than food — it's a symbol of peace offerings,
-                often used in ceremonies to settle disputes and celebrate
-                agreements in the Konbaung dynasty.
+                Laphet Thoke is more than food — it's a symbol of peace
+                offerings, often used in ceremonies to settle disputes and
+                celebrate agreements in the Konbaung dynasty.
               </h4>
             </div>
           </div>
@@ -368,7 +371,9 @@
       </section>
 
       <!-- ======================= SHAN NOODLES SECTION ======================= -->
-      <section class="shan-noodles container-lg mt-4 border p-0 overflow-hidden">
+      <section
+        class="shan-noodles container-lg mt-4 border p-0 overflow-hidden"
+      >
         <div data-aos="zoom-in-left">
           <h3 class="fw-bold fs-1 p-3">Shan Noodles (ရှမ်းခေါက်ဆွဲ)</h3>
 
@@ -377,10 +382,11 @@
             style="background-color: #dcb067"
           >
             <div class="flex-fill fs-5 d-flex align-items-center">
-              Shan noodles originate from Shan State, where the Shan ethnic group
-              resides. The Shan kingdom had trade connections with China and
-              Thailand, influencing the noodle's mild, clean, and savory flavor.
-              It's a classic example of ethnic diversity in Myanmar food culture.
+              Shan noodles originate from Shan State, where the Shan ethnic
+              group resides. The Shan kingdom had trade connections with China
+              and Thailand, influencing the noodle's mild, clean, and savory
+              flavor. It's a classic example of ethnic diversity in Myanmar food
+              culture.
             </div>
 
             <div class="food-img-container">
@@ -392,7 +398,7 @@
             </div>
           </div>
         </div>
-        
+
         <div data-aos="zoom-in-right">
           <div class="ingredients container-fluid mt-3 p-0">
             <div class="d-flex flex-column flex-md-row gap-3 p-4">
@@ -417,7 +423,7 @@
                   <li>Tomato-based sauce</li>
                   <li>Fresh spring onions</li>
                 </ol>
-                
+
                 <!-- Watch Video Button -->
                 <a href="video.html?id=intro004" class="btn" style="background-color:#5a3921; color:white;">
                   <i class="bi bi-play-circle"></i> Watch Video
@@ -427,8 +433,8 @@
 
             <div class="mt-3 text-center p-4">
               <h4>
-                Shan noodles are associated with hospitality in the hills and are
-                beloved by both locals and travelers. They highlight the
+                Shan noodles are associated with hospitality in the hills and
+                are beloved by both locals and travelers. They highlight the
                 simplicity and warmth of Shan culture, often served in Shan tea
                 shops and homes.
               </h4>
@@ -442,7 +448,7 @@
     <script>
       AOS.init({
         duration: 800,
-        once: true
+        once: true,
       });
     </script>
   </body>
