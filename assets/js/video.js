@@ -30,7 +30,6 @@ const videoList = [
     description: "Soft rice noodles with chicken or pork in a light tomato sauce.",
     file: "https://drive.google.com/file/d/1q-ZCkJSG8GCFkuYOzWY2vJlqX7hE7Qdb/preview",
     source: "https://youtu.be/otblLjczF44?si=E7YBYtmMI6Tjr8fm" // (if you also want to give credit)
-<<<<<<< HEAD
   },
   {
     id: "intro005",
@@ -59,10 +58,5 @@ const videoList = [
     description: "Marks the beginning of Buddhist Lent; monks receive robes and people observe religious practices",
     file: "https://drive.google.com/file/d/1vhCUAWg1z7a4sDe6AkGpuzt8ToOYwcoi/preview",
     source: "https://youtu.be/Ke0TOdq2t3A?si=W6ta1N5FgYYd8TxF" // (if you also want to give credit)
-  },
-=======
   }
 
->>>>>>> d284b8d12dd0abc11135a664f450187056e4bed5
-   
-];
