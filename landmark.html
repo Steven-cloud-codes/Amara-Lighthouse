@@ -14,11 +14,16 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+<<<<<<< HEAD
     <link
       rel="icon"
       type="image/png"
       href="assets/imgs/front-page/logo-small.svg"
     />
+=======
+    <!--AOS Animation-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+>>>>>>> d284b8d12dd0abc11135a664f450187056e4bed5
     <style>
       .back-btn {
         position: fixed;
@@ -164,16 +169,18 @@
 
     <!-- Hero Section -->
     <div
-      class="hero-section text-white d-flex align-items-center justify-content-center mb-4" style="background-image: url(assets/imgs/landmark/photo/banner.png);"
+      class="hero-section text-white d-flex align-items-center justify-content-center mb-4"
+      style="background-image: url(assets/imgs/landmark/photo/banner.png)"
+      data-aos="zoom-in"
     >
-      <div class="text-center px-3" >
-        <h1 class="display-3 fw-bold mb-3" >Myanmar Landmarks</h1>
+      <div class="text-center px-3">
+        <h1 class="display-3 fw-bold mb-3">Myanmar Landmarks</h1>
         <p class="lead mb-0 fs-4">Discover the cultural treasures of Myanmar</p>
       </div>
     </div>
 
     <!-- Introduction -->
-    <div class="container mb-5">
+    <div class="container mb-5" data-aos="fade-down">
       <p class="lead text-center mx-auto fs-5" style="max-width: 800px">
         Landmarks are crucial for orientation, providing cognitive anchors and
         reference points that aid in wayfinding and communication. They also
@@ -185,7 +192,7 @@
     <!-- Landmarks Section -->
     <div class="container mb-5">
       <!-- Bagan -->
-      <div class="landmark-card">
+      <div class="landmark-card" data-aos="zoom-in-up">
         <div class="landmark-img-container">
           <img
             src="assets/imgs/landmark/photo/bagan,land scape.jpg"
@@ -218,7 +225,7 @@
       </div>
 
       <!-- Mandalay Palace -->
-      <div class="landmark-card">
+      <div class="landmark-card" data-aos="zoom-in-up">
         <div class="landmark-img-container">
           <img
             src="assets/imgs/landmark/photo/Mandalay.png"
@@ -249,7 +256,7 @@
       </div>
 
       <!-- Kyaiktiyo (Golden Rock) -->
-      <div class="landmark-card">
+      <div class="landmark-card" data-aos="zoom-in-up">
         <div class="landmark-img-container">
           <img
             src="assets/imgs/landmark/photo/kyitehteeyoe.png"
@@ -285,7 +292,7 @@
       </div>
 
       <!-- Inle Lake -->
-      <div class="landmark-card">
+      <div class="landmark-card" data-aos="zoom-in-up">
         <div class="landmark-img-container">
           <img
             src="assets/imgs/landmark/photo/Inle lake.jpg"
@@ -318,7 +325,7 @@
       </div>
 
       <!-- U Bein Bridge -->
-      <div class="landmark-card">
+      <div class="landmark-card" data-aos="zoom-in-up">
         <div class="landmark-img-container">
           <img
             src="assets/imgs/landmark/photo/UBein.png"
@@ -349,7 +356,7 @@
       </div>
 
       <!-- Hpa An -->
-      <div class="landmark-card">
+      <div class="landmark-card" data-aos="zoom-in-up">
         <div class="landmark-img-container">
           <img
             src="assets/imgs/landmark/photo/HpaAn.png"
@@ -384,7 +391,7 @@
       </div>
 
       <!-- Mount Popa -->
-      <div class="landmark-card">
+      <div class="landmark-card" data-aos="fade-up">
         <div class="landmark-img-container">
           <img
             src="assets/imgs/landmark/photo/popa.png"
@@ -623,7 +630,11 @@
         </div>
       </div>
     </div>
-
+    <!--AOS Animation JS-->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
   </body>
