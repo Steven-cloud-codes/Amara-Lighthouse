@@ -37,9 +37,6 @@ style.innerHTML = `
     border-radius: 0 0 10px 10px;
   }
 
-  .contact-btn {
-    color: #643b47;
-  }
 `;
 document.head.appendChild(style);
 
@@ -52,7 +49,6 @@ auth.onAuthStateChanged((user) => {
       <a href="dashBoard.html" class="btn user-profile-btn">
         <i class="bi bi-person-circle"></i> My Account
       </a>
-      <a href="#" class="btn contact-btn">Contact Us</a>
     `;
   } else {
     authButtons.innerHTML = `
