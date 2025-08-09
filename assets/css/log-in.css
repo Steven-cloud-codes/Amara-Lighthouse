@@ -131,7 +131,7 @@ h2 {
 
     /* Body background switches to brown */
     .custom-body-background {
-        background-color: brown;
+        background-color: rgb(215, 83, 0);
     }
 
     /* Adjust graphic section */
