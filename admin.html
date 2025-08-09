@@ -393,7 +393,7 @@
                   <td>${customerName}</td>
                   <td>${orderDate}</td>
                   <td>${itemCount}</td>
-                  <td>$${totalAmount.toFixed(2)}</td>
+                  <td>Ks${totalAmount.toFixed(2)}</td>
                   <td>
                     <span class="badge ${getStatusBadgeClass(order.status)}">
                       ${order.status || "Pending"}
@@ -508,9 +508,9 @@
                 const row = document.createElement("tr");
                 row.innerHTML = `
                   <td>${item.name}</td>
-                  <td>$${item.price?.toFixed(2) || "0.00"}</td>
+                  <td>Ks${item.price?.toFixed(2) || "0.00"}</td>
                   <td>${item.quantity || 1}</td>
-                  <td>$${
+                  <td>Ks${
                     (item.price * item.quantity)?.toFixed(2) || "0.00"
                   }</td>
                 `;
@@ -522,7 +522,7 @@
             }
 
             // Set grand total
-            document.getElementById("orderGrandTotal").textContent = `$${
+            document.getElementById("orderGrandTotal").textContent = `Ks${
               order.total?.toFixed(2) || "0.00"
             }`;
 

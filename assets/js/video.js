@@ -6,10 +6,6 @@ const videoList = [
     file: "https://drive.google.com/file/d/1fjZKI5jRMfxZHsqr3kUeMD4xPJu8RoDw/preview",
     source: "https://www.youtube.com/watch?v=example123" // (if you also want to give credit)
   },
-<<<<<<< HEAD
-=======
-
->>>>>>> d284b8d12dd0abc11135a664f450187056e4bed5
   {
     id: "intro002",
     title: "Mohinga",
@@ -60,3 +56,4 @@ const videoList = [
     source: "https://youtu.be/Ke0TOdq2t3A?si=W6ta1N5FgYYd8TxF" // (if you also want to give credit)
   }
 
+]

@@ -41,6 +41,7 @@ style.innerHTML = `
 document.head.appendChild(style);
 
 // Update UI based on login state
+// Update UI based on login state
 auth.onAuthStateChanged((user) => {
   const authButtons = document.getElementById('authButtons');
 
