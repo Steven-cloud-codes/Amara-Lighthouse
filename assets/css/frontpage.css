@@ -161,27 +161,44 @@
     .hamburger {
         display: block;
     }
+ .main-nav {
+     display: block;
+     /* Keep block for animation space calculation */
+     max-height: 0;
+     border-radius:10px;
+     overflow: hidden;
+     transition: max-height 0.4s ease, padding 0.3s ease;
+     background-color: #f8f8f8;
+     /* Optional: Light background for dropdown */
+     padding: 0 0;
+     position: absolute;
+     top: 100%;
+     /* Right below header */
+     right:0px;
+     width: 30%;
+     z-index: 999;
+ }
 
-    .main-nav {
-        display: none;
-    }
+ /* When open */
+ .main-nav.show {
+     max-height: 300px;
+     /* Adjust if you have more links */
+     padding: 10px 0;
+ }
 
-    .main-nav.show {
-        display: block;
-    }
+ .main-nav .nav-list {
+     flex-direction: column;
+     gap: 5px;
+     align-items: flex-start;
+     padding: 0;
+ }
 
-    .main-nav .nav-list {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-        padding: 10px 0;
-    }
-
-    .nav-link {
-        margin: 5px 20px;
-        font-size: 16px;
-    }
-
+ .nav-link {
+     display: block;
+     width: 100px;
+     padding: 10px 20px;
+     margin: 0;
+ }
     .hero-background {
         padding: 20px;
         height: 400px;
