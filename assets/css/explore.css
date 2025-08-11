@@ -6,6 +6,10 @@ h5,
 h6 {
     font-family: 'Playfair Display', 'Noto Serif Myanmar', serif;
 }
+.main-container {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
 .row.extra-gap {
     --bs-gutter-x: 6rem;
