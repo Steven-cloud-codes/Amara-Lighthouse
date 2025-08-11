@@ -81,6 +81,13 @@
 
     /* Fix flex issues on mobile */
     @media (max-width: 767.98px) {
+      .nav-container {
+        justify-content: space-between;
+      }
+      .logo {
+        margin-top: 3px;
+        width: 140px;
+      }
       .watchVideo-btn {
         width: 200px;
         font-size: 13px;
@@ -103,13 +110,14 @@
       </div>
 
       <!-- Middle Row: Logo + navigation -->
-      <div class="d-flex align-items-center">
+      <div class="d-flex nav-container align-items-center">
         <a href="index.html" data-aos="fade-up">
           <div class="logo-container">
             <img
               src="assets/imgs/front-page/logo.svg"
               alt="Amara Lighthouse logo"
               width="350"
+              class="logo"
             />
           </div>
         </a>
